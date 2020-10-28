@@ -43,15 +43,20 @@ module probador
         end
 
         @(posedge clk);
-        fifo_data_in<=fifo_data_in+$random;
+        fifo_data_in<=fifo_data_in+$random+1;
         reset_L<=1;
         fifo_wr<=1;
 
-        repeat (3) begin
+        repeat (4) begin
             @(posedge clk);
             fifo_data_in<=$random+8;
         end
         
+        // repeat (10) begin
+        //     if ()
+        // end
+
+
         fifo_rd<=1;
 
         repeat (10) begin
@@ -62,12 +67,15 @@ module probador
         fifo_data_in<=$random;
         fifo_wr<=0;
 
-        repeat (10) begin
+        repeat (3) begin
             @(posedge clk);
             fifo_data_in<=$random;
         end
         fifo_rd<=0;
-        @(posedge clk);
+        repeat (5) begin
+            @(posedge clk);
+        end
+        
         @(posedge clk);
 
         $finish;

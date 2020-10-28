@@ -19,16 +19,8 @@ module control_logic
 
 reg [PTR_L-1:0] counter;
 
-always @ (posedge clk) begin
-    if (!reset_L) begin
-        counter <= 0;
-        error <= 0;
-        almost_empty <= 0;
-        almost_full <= 0;
-        fifo_full <= 0;
-        fifo_empty <= 0;
-    end 
-    else begin
+always @(*) begin
+    if (reset_L) begin
         //Se realiza el control de los umbrales de almost_full, en el caso que hayan mas 
         //datos almacenados en memoria que lo que indica el umbral
         if (counter >= full_threshold) begin
@@ -45,6 +37,23 @@ always @ (posedge clk) begin
         else begin
             almost_empty <= 0;
         end
+    end
+    else begin
+        almost_empty <= 0;
+        almost_full <= 0;
+    end
+end
+
+
+always @ (posedge clk) begin
+    if (!reset_L) begin
+        counter <= 0;
+        error <= 0;
+        fifo_full <= 0;
+        fifo_empty <= 0;
+    end 
+    else begin
+        
         //En esta etapa se realiza el control del error, asi como del contador que administra 
         //la cantidad de datos almacenados en memoria. Ademas se lleva el control de las senales 
         //de memoria llena o memoria vacia.
@@ -71,9 +80,11 @@ always @ (posedge clk) begin
                 fifo_empty <= 0;
             end
         end
-        //else if (fifo_wr && fifo_rd && fifo_full) begin
-
-        //end
+        else if (fifo_wr && fifo_rd && fifo_full) begin
+            counter <= counter - 1;
+            fifo_full <= 0;
+        end
+        
     end
 end
 

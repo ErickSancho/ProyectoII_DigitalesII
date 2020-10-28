@@ -13,22 +13,32 @@ module read_logic
     output reg pop
 );
 
+always @(*) begin
+    if (reset_L) begin
+        if (fifo_rd && !fifo_empty) begin
+            pop = 1;
+        end
+        else begin
+            pop = 0;
+        end
+    end
+    else begin
+        pop=0;
+    end
+    
+end
+
 always @(posedge clk) begin
     if (!reset_L) begin
         rd_ptr <= 0;
-        pop <= 0;
     end 
     else begin
         if (fifo_rd && !fifo_empty) begin
-            pop <= 1;
             rd_ptr <= rd_ptr + 1;
             if (rd_ptr == MEM_SIZE-1) begin 
                 rd_ptr <= 0;
             end
         end 
-        else begin
-            pop <= 0;
-        end
     end
 end
 
