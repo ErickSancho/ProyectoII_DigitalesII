@@ -1,4 +1,4 @@
-Proyecto 2 - Circuitos Digitales II
+# Proyecto 2 - Circuitos Digitales II
 
 # Miembros:
 

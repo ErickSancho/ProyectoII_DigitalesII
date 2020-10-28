@@ -1,0 +1,377 @@
+$date
+	Wed Oct 28 15:47:49 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	100ps
+$end
+$scope module BUF $end
+$var wire 1 ! A $end
+$var wire 1 " Y $end
+$upscope $end
+$scope module BancoPruebas $end
+$var wire 2 # Umbrales_Ds_internos [1:0] $end
+$var wire 2 $ Umbrales_MFs_internos [1:0] $end
+$var wire 2 % Umbrales_VCs_internos [1:0] $end
+$var wire 1 & active_out_E $end
+$var wire 1 ' error_out_E $end
+$var wire 1 ( idle_out_E $end
+$var wire 1 ) reset $end
+$var wire 1 * init $end
+$var wire 1 + idle_out $end
+$var wire 1 , error_out $end
+$var wire 1 - clk $end
+$var wire 1 . active_out $end
+$var wire 2 / Umbrales_VCs [1:0] $end
+$var wire 2 0 Umbrales_MFs [1:0] $end
+$var wire 2 1 Umbrales_Ds [1:0] $end
+$var wire 5 2 FIFO_errors [4:0] $end
+$var wire 5 3 FIFO_empties [4:0] $end
+$scope module cond1 $end
+$var wire 1 ) reset $end
+$var wire 1 * init $end
+$var wire 1 - clk $end
+$var wire 2 4 Umbrales_VCs [1:0] $end
+$var wire 2 5 Umbrales_MFs [1:0] $end
+$var wire 2 6 Umbrales_Ds [1:0] $end
+$var wire 5 7 FIFO_errors [4:0] $end
+$var wire 5 8 FIFO_empties [4:0] $end
+$var reg 2 9 Umbrales_Ds_internos [1:0] $end
+$var reg 2 : Umbrales_MFs_internos [1:0] $end
+$var reg 2 ; Umbrales_VCs_internos [1:0] $end
+$var reg 1 . active_out $end
+$var reg 1 , error_out $end
+$var reg 5 < estado [4:0] $end
+$var reg 5 = estado_proximo [4:0] $end
+$var reg 1 + idle_out $end
+$upscope $end
+$scope module est1 $end
+$var wire 2 > Umbrales_Ds_internos [1:0] $end
+$var wire 2 ? Umbrales_MFs_internos [1:0] $end
+$var wire 2 @ Umbrales_VCs_internos [1:0] $end
+$var wire 1 & active_out_E $end
+$var wire 1 ' error_out_E $end
+$var wire 1 ( idle_out_E $end
+$var wire 1 ) reset $end
+$var wire 1 * init $end
+$var wire 1 - clk $end
+$var wire 2 A Umbrales_VCs [1:0] $end
+$var wire 2 B Umbrales_MFs [1:0] $end
+$var wire 2 C Umbrales_Ds [1:0] $end
+$var wire 5 D FIFO_errors [4:0] $end
+$var wire 5 E FIFO_empties [4:0] $end
+$upscope $end
+$scope module probador_ $end
+$var wire 2 F Umbrales_Ds_internos [1:0] $end
+$var wire 2 G Umbrales_MFs_internos [1:0] $end
+$var wire 2 H Umbrales_VCs_internos [1:0] $end
+$var wire 1 . active_out $end
+$var wire 1 , error_out $end
+$var wire 1 + idle_out $end
+$var reg 5 I FIFO_empties [4:0] $end
+$var reg 5 J FIFO_errors [4:0] $end
+$var reg 2 K Umbrales_Ds [1:0] $end
+$var reg 2 L Umbrales_MFs [1:0] $end
+$var reg 2 M Umbrales_VCs [1:0] $end
+$var reg 1 - clk $end
+$var reg 1 * init $end
+$var reg 1 ) reset $end
+$upscope $end
+$upscope $end
+$scope module DFF $end
+$var wire 1 N C $end
+$var wire 1 O D $end
+$var reg 1 P Q $end
+$upscope $end
+$scope module DFFSR $end
+$var wire 1 Q C $end
+$var wire 1 R D $end
+$var wire 1 S R $end
+$var wire 1 T S $end
+$var reg 1 U Q $end
+$upscope $end
+$scope module NAND $end
+$var wire 1 V A $end
+$var wire 1 W B $end
+$var wire 1 X Y $end
+$upscope $end
+$scope module NOR $end
+$var wire 1 Y A $end
+$var wire 1 Z B $end
+$var wire 1 [ Y $end
+$upscope $end
+$scope module NOT $end
+$var wire 1 \ A $end
+$var wire 1 ] Y $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+z]
+z\
+x[
+zZ
+zY
+xX
+zW
+zV
+xU
+zT
+zS
+zR
+zQ
+xP
+zO
+zN
+b0 M
+b0 L
+b0 K
+b0 J
+b11111 I
+bx H
+bx G
+bx F
+b11111 E
+b0 D
+b0 C
+b0 B
+b0 A
+bx @
+bx ?
+bx >
+b1 =
+bx <
+bx ;
+bx :
+bx 9
+b11111 8
+b0 7
+b0 6
+b0 5
+b0 4
+b11111 3
+b0 2
+b0 1
+b0 0
+b0 /
+0.
+0-
+0,
+0+
+0*
+0)
+0(
+0'
+0&
+bx %
+bx $
+bx #
+z"
+z!
+$end
+#200
+b10 =
+b0 #
+b0 >
+b0 F
+b0 9
+b0 %
+b0 @
+b0 H
+b0 ;
+b0 $
+b0 ?
+b0 G
+b0 :
+b1 <
+1-
+#400
+0-
+#600
+1-
+#800
+0-
+#1000
+1-
+#1200
+0-
+#1400
+1-
+#1600
+0-
+#1800
+1-
+#2000
+0-
+#2200
+b10 =
+b1 1
+b1 6
+b1 C
+b1 K
+b10 /
+b10 4
+b10 A
+b10 M
+b11 0
+b11 5
+b11 B
+b11 L
+1)
+1-
+#2400
+0-
+#2600
+b100 =
+b0x #
+b0x >
+b0x F
+b1 9
+bx0 %
+bx0 @
+bx0 H
+b10 ;
+bx $
+bx ?
+bx G
+b11 :
+b10 <
+1-
+#2800
+0-
+#3000
+1+
+b100 <
+1-
+#3200
+0-
+#3400
+b1000 =
+1+
+b11011 3
+b11011 8
+b11011 E
+b11011 I
+1-
+#3600
+0-
+#3800
+1.
+0+
+b11 1
+b11 6
+b11 C
+b11 K
+b1 /
+b1 4
+b1 A
+b1 M
+b10 0
+b10 5
+b10 B
+b10 L
+b1011 3
+b1011 8
+b1011 E
+b1011 I
+b1000 <
+1-
+#4000
+0-
+#4200
+1-
+#4400
+0-
+#4600
+b10000 =
+1.
+b10 2
+b10 7
+b10 D
+b10 J
+1-
+#4800
+0-
+#5000
+b1 =
+1,
+0.
+b10000 <
+b0 2
+b0 7
+b0 D
+b0 J
+1-
+#5200
+0-
+#5400
+b10 =
+0,
+b1 <
+1-
+#5600
+0-
+#5800
+b100 =
+bx #
+bx >
+bx F
+b11 9
+b0x %
+b0x @
+b0x H
+b1 ;
+bx0 $
+bx0 ?
+bx0 G
+b10 :
+b10 <
+1-
+#6000
+0-
+#6200
+b10 =
+1+
+1*
+b100 <
+1-
+#6400
+0-
+#6600
+b100 =
+0+
+b10 <
+0*
+1-
+#6800
+0-
+#7000
+b1000 =
+1+
+b100 <
+1-
+#7200
+0-
+#7400
+1.
+0+
+b1000 <
+1-
+#7600
+0-
+#7800
+1-
+#8000
+0-
+#8200
+1-
+#8400
+0-
+#8600
+1-
+#8800
+0-
+#9000
+1-
