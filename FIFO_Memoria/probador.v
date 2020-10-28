@@ -30,7 +30,7 @@ module probador
         $dumpfile("Resultados.vcd");
         $dumpvars;
 
-        fifo_data_in <= 0;
+        fifo_data_in<=0;
         fifo_rd<=0;
         fifo_wr<=0;
         empty_threshold<=1;
@@ -39,15 +39,17 @@ module probador
 
         repeat (5) begin
             @(posedge clk);
+            fifo_data_in<=$random;
         end
 
         @(posedge clk);
+        fifo_data_in<=fifo_data_in+$random;
         reset_L<=1;
         fifo_wr<=1;
 
-        repeat (4) begin
+        repeat (3) begin
             @(posedge clk);
-            fifo_data_in<=$random;
+            fifo_data_in<=$random+8;
         end
         
         fifo_rd<=1;
@@ -57,9 +59,12 @@ module probador
             fifo_data_in<=$random;
         end
         @(posedge clk);
+        fifo_data_in<=$random;
         fifo_wr<=0;
-        repeat (5) begin
+
+        repeat (10) begin
             @(posedge clk);
+            fifo_data_in<=$random;
         end
         fifo_rd<=0;
         @(posedge clk);

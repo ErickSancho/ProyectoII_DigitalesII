@@ -76,7 +76,7 @@ memory memoria(/*AUTOINST*/
 	       .clk			(clk));
 
 reg [WORD_SIZE-1:0]    data_in_MM;
-always @(posedge clk) begin
+always @(*) begin
     data_in_MM<=fifo_data_in;
     fifo_data_out<=data_out_MM;
 end
