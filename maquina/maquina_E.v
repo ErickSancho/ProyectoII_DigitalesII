@@ -2,11 +2,99 @@
 
 (* top =  1  *)
 (* src = "maquina.v:1" *)
-module maquina_E(clk, reset, init, Umbrales_MFs, Umbrales_VCs, Umbrales_Ds, FIFO_empties, FIFO_errors, Umbrales_MFs_internos, Umbrales_VCs_internos, Umbrales_Ds_internos, error_out_E, active_out_E, idle_out_E);
+module maquina_E(clk, reset, init, Umbrales_MFs, Umbrales_VCs, Umbrales_Ds, FIFO_empties, FIFO_errors, Umbrales_MFs_internos, Umbrales_VCs_internos, Umbrales_Ds_internos, error_out_E, errors_out_E, active_out_E, idle_out_E);
+  (* src = "maquina.v:38" *)
+  wire [4:0] _000_;
+  (* src = "maquina.v:38" *)
+  wire [1:0] _001_;
+  (* src = "maquina.v:38" *)
+  wire [1:0] _002_;
+  (* src = "maquina.v:38" *)
+  wire [1:0] _003_;
+  (* src = "maquina.v:38" *)
+  wire _004_;
+  (* src = "maquina.v:38" *)
+  wire _005_;
+  (* src = "maquina.v:38" *)
+  wire [4:0] _006_;
+  (* src = "maquina.v:38" *)
+  wire _007_;
+  wire _008_;
+  wire _009_;
+  wire _010_;
+  wire _011_;
+  wire _012_;
+  wire _013_;
+  wire _014_;
+  wire _015_;
+  wire _016_;
+  wire _017_;
+  wire _018_;
+  wire _019_;
+  wire _020_;
+  wire _021_;
+  wire _022_;
+  wire _023_;
+  wire _024_;
+  wire _025_;
+  wire _026_;
+  wire _027_;
+  wire _028_;
+  wire _029_;
+  wire _030_;
+  wire _031_;
+  wire _032_;
+  wire _033_;
+  wire _034_;
+  wire _035_;
+  wire _036_;
+  wire _037_;
+  wire _038_;
+  wire _039_;
+  wire _040_;
+  wire _041_;
+  wire _042_;
+  wire _043_;
+  wire _044_;
+  wire _045_;
+  wire _046_;
+  wire _047_;
+  wire _048_;
+  wire _049_;
+  wire _050_;
+  wire _051_;
+  wire _052_;
+  wire _053_;
+  wire _054_;
+  wire _055_;
+  wire _056_;
+  wire _057_;
+  wire _058_;
+  wire _059_;
+  wire _060_;
+  wire _061_;
+  wire _062_;
+  wire _063_;
+  wire _064_;
+  wire _065_;
+  wire _066_;
+  wire _067_;
+  wire _068_;
+  wire _069_;
+  wire _070_;
+  wire _071_;
+  wire _072_;
+  wire _073_;
+  wire _074_;
+  wire _075_;
+  wire _076_;
+  wire _077_;
   (* src = "maquina.v:8" *)
   input [4:0] FIFO_empties;
   (* src = "maquina.v:9" *)
   input [4:0] FIFO_errors;
+  (* src = "maquina.v:30" *)
+  wire [4:0] FIFO_errors_temp;
   (* src = "maquina.v:7" *)
   input [1:0] Umbrales_Ds;
   (* src = "maquina.v:12" *)
@@ -19,22 +107,568 @@ module maquina_E(clk, reset, init, Umbrales_MFs, Umbrales_VCs, Umbrales_Ds, FIFO
   input [1:0] Umbrales_VCs;
   (* src = "maquina.v:11" *)
   output [1:0] Umbrales_VCs_internos;
-  (* src = "maquina.v:14" *)
+  (* src = "maquina.v:15" *)
   output active_out_E;
+  (* src = "maquina.v:26" *)
+  wire active_out_E_temp;
   (* src = "maquina.v:2" *)
   input clk;
   (* src = "maquina.v:13" *)
   output error_out_E;
-  (* src = "maquina.v:15" *)
+  (* src = "maquina.v:24" *)
+  wire error_out_E_temp;
+  (* src = "maquina.v:14" *)
+  output [4:0] errors_out_E;
+  (* onehot = 32'd1 *)
+  wire [4:0] estado;
+  (* src = "maquina.v:16" *)
   output idle_out_E;
+  (* src = "maquina.v:27" *)
+  wire idle_out_E_temp;
   (* src = "maquina.v:4" *)
   input init;
   (* src = "maquina.v:3" *)
   input reset;
-  assign Umbrales_Ds_internos = 2'b00;
-  assign Umbrales_MFs_internos = 2'b00;
-  assign Umbrales_VCs_internos = 2'b00;
-  assign active_out_E = 1'b0;
-  assign error_out_E = 1'b0;
-  assign idle_out_E = 1'b0;
+  NOT _078_ (
+    .A(estado[1]),
+    .Y(_045_)
+  );
+  NAND _079_ (
+    .A(reset),
+    .B(_045_),
+    .Y(_041_)
+  );
+  NOT _080_ (
+    .A(reset),
+    .Y(_046_)
+  );
+  NOT _081_ (
+    .A(init),
+    .Y(_047_)
+  );
+  NOR _082_ (
+    .A(estado[2]),
+    .B(estado[3]),
+    .Y(_048_)
+  );
+  NOT _083_ (
+    .A(_048_),
+    .Y(_049_)
+  );
+  NOR _084_ (
+    .A(_049_),
+    .B(estado[4]),
+    .Y(_050_)
+  );
+  NOR _085_ (
+    .A(_050_),
+    .B(_047_),
+    .Y(_051_)
+  );
+  NOR _086_ (
+    .A(_051_),
+    .B(estado[0]),
+    .Y(_052_)
+  );
+  NOR _087_ (
+    .A(_052_),
+    .B(_046_),
+    .Y(_042_)
+  );
+  NAND _088_ (
+    .A(FIFO_empties[1]),
+    .B(FIFO_empties[0]),
+    .Y(_053_)
+  );
+  NOT _089_ (
+    .A(FIFO_empties[2]),
+    .Y(_054_)
+  );
+  NOT _090_ (
+    .A(FIFO_empties[3]),
+    .Y(_055_)
+  );
+  NOR _091_ (
+    .A(_055_),
+    .B(_054_),
+    .Y(_056_)
+  );
+  NAND _092_ (
+    .A(_056_),
+    .B(FIFO_empties[4]),
+    .Y(_057_)
+  );
+  NOR _093_ (
+    .A(_057_),
+    .B(_053_),
+    .Y(_058_)
+  );
+  NOT _094_ (
+    .A(FIFO_errors[0]),
+    .Y(_059_)
+  );
+  NOT _095_ (
+    .A(FIFO_errors[1]),
+    .Y(_060_)
+  );
+  NAND _096_ (
+    .A(_060_),
+    .B(_059_),
+    .Y(_061_)
+  );
+  NOT _097_ (
+    .A(FIFO_errors[4]),
+    .Y(_062_)
+  );
+  NOR _098_ (
+    .A(FIFO_errors[3]),
+    .B(FIFO_errors[2]),
+    .Y(_063_)
+  );
+  NAND _099_ (
+    .A(_063_),
+    .B(_062_),
+    .Y(_064_)
+  );
+  NOR _100_ (
+    .A(_064_),
+    .B(_061_),
+    .Y(_065_)
+  );
+  NOR _101_ (
+    .A(_046_),
+    .B(init),
+    .Y(_066_)
+  );
+  NAND _102_ (
+    .A(_066_),
+    .B(_049_),
+    .Y(_067_)
+  );
+  NOT _103_ (
+    .A(_067_),
+    .Y(_068_)
+  );
+  NAND _104_ (
+    .A(_068_),
+    .B(_065_),
+    .Y(_069_)
+  );
+  NOR _105_ (
+    .A(_069_),
+    .B(_058_),
+    .Y(_043_)
+  );
+  NAND _106_ (
+    .A(_066_),
+    .B(estado[4]),
+    .Y(_070_)
+  );
+  NOR _107_ (
+    .A(FIFO_errors[4]),
+    .B(FIFO_errors[2]),
+    .Y(_071_)
+  );
+  NOR _108_ (
+    .A(_061_),
+    .B(FIFO_errors[3]),
+    .Y(_072_)
+  );
+  NAND _109_ (
+    .A(_072_),
+    .B(_071_),
+    .Y(_073_)
+  );
+  NOR _110_ (
+    .A(_067_),
+    .B(_073_),
+    .Y(_074_)
+  );
+  NAND _111_ (
+    .A(_074_),
+    .B(_058_),
+    .Y(_075_)
+  );
+  NAND _112_ (
+    .A(_075_),
+    .B(_070_),
+    .Y(_044_)
+  );
+  NOR _113_ (
+    .A(_046_),
+    .B(_059_),
+    .Y(_000_[0])
+  );
+  NOR _114_ (
+    .A(_046_),
+    .B(_060_),
+    .Y(_000_[1])
+  );
+  NOT _115_ (
+    .A(FIFO_errors[2]),
+    .Y(_076_)
+  );
+  NOR _116_ (
+    .A(_046_),
+    .B(_076_),
+    .Y(_000_[2])
+  );
+  NOT _117_ (
+    .A(FIFO_errors[3]),
+    .Y(_077_)
+  );
+  NOR _118_ (
+    .A(_046_),
+    .B(_077_),
+    .Y(_000_[3])
+  );
+  NOR _119_ (
+    .A(_046_),
+    .B(_062_),
+    .Y(_000_[4])
+  );
+  NOT _120_ (
+    .A(estado[3]),
+    .Y(_008_)
+  );
+  NOR _121_ (
+    .A(_046_),
+    .B(_008_),
+    .Y(_007_)
+  );
+  NOT _122_ (
+    .A(estado[2]),
+    .Y(_009_)
+  );
+  NOR _123_ (
+    .A(_046_),
+    .B(_009_),
+    .Y(_004_)
+  );
+  NOT _124_ (
+    .A(FIFO_errors_temp[0]),
+    .Y(_010_)
+  );
+  NAND _125_ (
+    .A(reset),
+    .B(estado[1]),
+    .Y(_011_)
+  );
+  NOR _126_ (
+    .A(_011_),
+    .B(_010_),
+    .Y(_006_[0])
+  );
+  NOT _127_ (
+    .A(FIFO_errors_temp[1]),
+    .Y(_012_)
+  );
+  NOR _128_ (
+    .A(_011_),
+    .B(_012_),
+    .Y(_006_[1])
+  );
+  NOT _129_ (
+    .A(FIFO_errors_temp[2]),
+    .Y(_013_)
+  );
+  NOR _130_ (
+    .A(_011_),
+    .B(_013_),
+    .Y(_006_[2])
+  );
+  NOT _131_ (
+    .A(FIFO_errors_temp[3]),
+    .Y(_015_)
+  );
+  NOR _132_ (
+    .A(_011_),
+    .B(_015_),
+    .Y(_006_[3])
+  );
+  NOT _133_ (
+    .A(FIFO_errors_temp[4]),
+    .Y(_016_)
+  );
+  NOR _134_ (
+    .A(_011_),
+    .B(_016_),
+    .Y(_006_[4])
+  );
+  NOT _135_ (
+    .A(_011_),
+    .Y(_005_)
+  );
+  NOR _136_ (
+    .A(Umbrales_Ds_internos[0]),
+    .B(estado[4]),
+    .Y(_017_)
+  );
+  NOT _137_ (
+    .A(Umbrales_Ds[0]),
+    .Y(_018_)
+  );
+  NAND _138_ (
+    .A(_018_),
+    .B(estado[4]),
+    .Y(_019_)
+  );
+  NAND _139_ (
+    .A(_019_),
+    .B(reset),
+    .Y(_020_)
+  );
+  NOR _140_ (
+    .A(_020_),
+    .B(_017_),
+    .Y(_001_[0])
+  );
+  NOR _141_ (
+    .A(Umbrales_Ds_internos[1]),
+    .B(estado[4]),
+    .Y(_021_)
+  );
+  NOT _142_ (
+    .A(Umbrales_Ds[1]),
+    .Y(_022_)
+  );
+  NAND _143_ (
+    .A(_022_),
+    .B(estado[4]),
+    .Y(_023_)
+  );
+  NAND _144_ (
+    .A(_023_),
+    .B(reset),
+    .Y(_024_)
+  );
+  NOR _145_ (
+    .A(_024_),
+    .B(_021_),
+    .Y(_001_[1])
+  );
+  NOR _146_ (
+    .A(Umbrales_VCs_internos[0]),
+    .B(estado[4]),
+    .Y(_025_)
+  );
+  NOT _147_ (
+    .A(Umbrales_VCs[0]),
+    .Y(_026_)
+  );
+  NAND _148_ (
+    .A(_026_),
+    .B(estado[4]),
+    .Y(_027_)
+  );
+  NAND _149_ (
+    .A(_027_),
+    .B(reset),
+    .Y(_028_)
+  );
+  NOR _150_ (
+    .A(_028_),
+    .B(_025_),
+    .Y(_003_[0])
+  );
+  NOR _151_ (
+    .A(Umbrales_VCs_internos[1]),
+    .B(estado[4]),
+    .Y(_029_)
+  );
+  NOT _152_ (
+    .A(Umbrales_VCs[1]),
+    .Y(_030_)
+  );
+  NAND _153_ (
+    .A(_030_),
+    .B(estado[4]),
+    .Y(_031_)
+  );
+  NAND _154_ (
+    .A(_031_),
+    .B(reset),
+    .Y(_032_)
+  );
+  NOR _155_ (
+    .A(_032_),
+    .B(_029_),
+    .Y(_003_[1])
+  );
+  NOR _156_ (
+    .A(Umbrales_MFs_internos[0]),
+    .B(estado[4]),
+    .Y(_033_)
+  );
+  NOT _157_ (
+    .A(Umbrales_MFs[0]),
+    .Y(_034_)
+  );
+  NAND _158_ (
+    .A(_034_),
+    .B(estado[4]),
+    .Y(_035_)
+  );
+  NAND _159_ (
+    .A(_035_),
+    .B(reset),
+    .Y(_036_)
+  );
+  NOR _160_ (
+    .A(_036_),
+    .B(_033_),
+    .Y(_002_[0])
+  );
+  NOR _161_ (
+    .A(Umbrales_MFs_internos[1]),
+    .B(estado[4]),
+    .Y(_037_)
+  );
+  NOT _162_ (
+    .A(Umbrales_MFs[1]),
+    .Y(_038_)
+  );
+  NAND _163_ (
+    .A(_038_),
+    .B(estado[4]),
+    .Y(_039_)
+  );
+  NAND _164_ (
+    .A(_039_),
+    .B(reset),
+    .Y(_040_)
+  );
+  NOR _165_ (
+    .A(_040_),
+    .B(_037_),
+    .Y(_002_[1])
+  );
+  NOR _166_ (
+    .A(_067_),
+    .B(_065_),
+    .Y(_014_)
+  );
+  DFF _167_ (
+    .C(clk),
+    .D(_041_),
+    .Q(estado[0])
+  );
+  DFF _168_ (
+    .C(clk),
+    .D(_014_),
+    .Q(estado[1])
+  );
+  DFF _169_ (
+    .C(clk),
+    .D(_043_),
+    .Q(estado[2])
+  );
+  DFF _170_ (
+    .C(clk),
+    .D(_044_),
+    .Q(estado[3])
+  );
+  DFF _171_ (
+    .C(clk),
+    .D(_042_),
+    .Q(estado[4])
+  );
+  DFF _172_ (
+    .C(clk),
+    .D(_002_[0]),
+    .Q(Umbrales_MFs_internos[0])
+  );
+  DFF _173_ (
+    .C(clk),
+    .D(_002_[1]),
+    .Q(Umbrales_MFs_internos[1])
+  );
+  DFF _174_ (
+    .C(clk),
+    .D(_003_[0]),
+    .Q(Umbrales_VCs_internos[0])
+  );
+  DFF _175_ (
+    .C(clk),
+    .D(_003_[1]),
+    .Q(Umbrales_VCs_internos[1])
+  );
+  DFF _176_ (
+    .C(clk),
+    .D(_001_[0]),
+    .Q(Umbrales_Ds_internos[0])
+  );
+  DFF _177_ (
+    .C(clk),
+    .D(_001_[1]),
+    .Q(Umbrales_Ds_internos[1])
+  );
+  DFF _178_ (
+    .C(clk),
+    .D(_005_),
+    .Q(error_out_E)
+  );
+  DFF _179_ (
+    .C(clk),
+    .D(_006_[0]),
+    .Q(errors_out_E[0])
+  );
+  DFF _180_ (
+    .C(clk),
+    .D(_006_[1]),
+    .Q(errors_out_E[1])
+  );
+  DFF _181_ (
+    .C(clk),
+    .D(_006_[2]),
+    .Q(errors_out_E[2])
+  );
+  DFF _182_ (
+    .C(clk),
+    .D(_006_[3]),
+    .Q(errors_out_E[3])
+  );
+  DFF _183_ (
+    .C(clk),
+    .D(_006_[4]),
+    .Q(errors_out_E[4])
+  );
+  DFF _184_ (
+    .C(clk),
+    .D(_004_),
+    .Q(active_out_E)
+  );
+  DFF _185_ (
+    .C(clk),
+    .D(_007_),
+    .Q(idle_out_E)
+  );
+  DFF _186_ (
+    .C(clk),
+    .D(_000_[0]),
+    .Q(FIFO_errors_temp[0])
+  );
+  DFF _187_ (
+    .C(clk),
+    .D(_000_[1]),
+    .Q(FIFO_errors_temp[1])
+  );
+  DFF _188_ (
+    .C(clk),
+    .D(_000_[2]),
+    .Q(FIFO_errors_temp[2])
+  );
+  DFF _189_ (
+    .C(clk),
+    .D(_000_[3]),
+    .Q(FIFO_errors_temp[3])
+  );
+  DFF _190_ (
+    .C(clk),
+    .D(_000_[4]),
+    .Q(FIFO_errors_temp[4])
+  );
+  assign active_out_E_temp = estado[2];
+  assign error_out_E_temp = estado[1];
+  assign idle_out_E_temp = estado[3];
 endmodule

@@ -11,10 +11,23 @@ module maquina (
     output reg [1:0] Umbrales_VCs_internos,
     output reg [1:0] Umbrales_Ds_internos,
     output reg error_out,
+    output reg [4:0] errors_out,
     output reg active_out,
     output reg idle_out);
 
     reg [4:0] estado, estado_proximo;
+
+    // Salidas intermedias:
+    reg [1:0] Umbrales_MFs_internos_temp;
+    reg [1:0] Umbrales_VCs_internos_temp;
+    reg [1:0] Umbrales_Ds_internos_temp;
+    reg error_out_temp;
+    reg [4:0] errors_out_temp;
+    reg active_out_temp;
+    reg idle_out_temp;
+
+    // Se guarda el valor de los errores
+    reg [4:0] FIFO_errors_temp;
 
     parameter RESET = 1;
     parameter INIT = 2;
@@ -28,8 +41,21 @@ module maquina (
             Umbrales_VCs_internos <= 00;
             Umbrales_Ds_internos <= 00;
             error_out <= 0;
+            errors_out <= 00000;
             active_out <= 0;
             idle_out <= 0;
+            FIFO_errors_temp <= 00000;
+        end
+
+        else begin
+            Umbrales_MFs_internos <= Umbrales_MFs_internos_temp;
+            Umbrales_VCs_internos <= Umbrales_VCs_internos_temp;
+            Umbrales_Ds_internos <= Umbrales_Ds_internos_temp;
+            error_out <= error_out_temp;
+            errors_out <= errors_out_temp;
+            active_out <= active_out_temp;
+            idle_out <= idle_out_temp;
+            FIFO_errors_temp <= FIFO_errors;
         end
     end
 
@@ -41,12 +67,14 @@ module maquina (
     always @ (*) begin
 
         // Valores por defecto
-        idle_out = 0;
-        active_out = 0;
-        error_out = 0;
-        Umbrales_MFs_internos = Umbrales_MFs_internos;
-        Umbrales_VCs_internos = Umbrales_VCs_internos;
-        Umbrales_Ds_internos = Umbrales_Ds_internos;
+        idle_out_temp = 0;
+        active_out_temp = 0;
+        error_out_temp = 0;
+        errors_out_temp = 00000;
+        Umbrales_MFs_internos_temp = Umbrales_MFs_internos;
+        Umbrales_VCs_internos_temp = Umbrales_VCs_internos;
+        Umbrales_Ds_internos_temp = Umbrales_Ds_internos;
+
         estado_proximo = estado;
 
         case(estado)
@@ -59,9 +87,9 @@ module maquina (
 
             INIT: begin
 
-                Umbrales_MFs_internos = Umbrales_MFs;
-                Umbrales_VCs_internos = Umbrales_VCs;
-                Umbrales_Ds_internos = Umbrales_Ds;
+                Umbrales_MFs_internos_temp = Umbrales_MFs;
+                Umbrales_VCs_internos_temp = Umbrales_VCs;
+                Umbrales_Ds_internos_temp = Umbrales_Ds;
 
                 estado_proximo = IDLE;
 
@@ -71,7 +99,7 @@ module maquina (
 
             IDLE: begin
    
-                idle_out = 1;
+                idle_out_temp = 1;
 
                 if (init) estado_proximo = INIT;
                 else if (FIFO_errors != 'b00000) estado_proximo = ERROR;
@@ -81,7 +109,7 @@ module maquina (
 
             ACTIVE: begin
 
-                active_out = 1;
+                active_out_temp = 1;
 
                 if (init) estado_proximo = INIT;
                 else if (FIFO_errors != 'b00000) estado_proximo = ERROR;
@@ -91,7 +119,8 @@ module maquina (
 
             ERROR: begin
 
-                error_out = 1;
+                error_out_temp = 1;
+                errors_out_temp = FIFO_errors_temp;
 
                 if (reset) estado_proximo = RESET;
 

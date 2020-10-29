@@ -16,4 +16,5 @@ yosys:
 	@ sed -i 's/error_out/error_out_E/' maquina_E.v
 	@ sed -i 's/active_out/active_out_E/' maquina_E.v
 	@ sed -i 's/idle_out/idle_out_E/' maquina_E.v
+	@ sed -i 's/errors_out/errors_out_E/' maquina_E.v
 	
