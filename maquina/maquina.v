@@ -2,14 +2,20 @@ module maquina (
     input clk,
     input reset,
     input init,
-    input [1:0] Umbrales_MFs,
-    input [1:0] Umbrales_VCs,
-    input [1:0] Umbrales_Ds,
+    input [1:0] Umbral_MF_alto,
+    input [1:0] Umbral_MF_bajo,
+    input [1:0] Umbral_VC_alto,
+    input [1:0] Umbral_VC_bajo,
+    input [1:0] Umbral_D_alto,
+    input [1:0] Umbral_D_bajo,
     input [4:0] FIFO_empties,
     input [4:0] FIFO_errors,
-    output reg [1:0] Umbrales_MFs_internos,
-    output reg [1:0] Umbrales_VCs_internos,
-    output reg [1:0] Umbrales_Ds_internos,
+    output reg [1:0] Umbral_MF_alto_interno,
+    output reg [1:0] Umbral_MF_bajo_interno,
+    output reg [1:0] Umbral_VC_alto_interno,
+    output reg [1:0] Umbral_VC_bajo_interno,
+    output reg [1:0] Umbral_D_alto_interno,
+    output reg [1:0] Umbral_D_bajo_interno,
     output reg error_out,
     output reg [4:0] errors_out,
     output reg active_out,
@@ -18,9 +24,12 @@ module maquina (
     reg [4:0] estado, estado_proximo;
 
     // Salidas intermedias:
-    reg [1:0] Umbrales_MFs_internos_temp;
-    reg [1:0] Umbrales_VCs_internos_temp;
-    reg [1:0] Umbrales_Ds_internos_temp;
+    reg [1:0] Umbral_MF_alto_interno_temp;
+    reg [1:0] Umbral_VC_alto_interno_temp;
+    reg [1:0] Umbral_D_alto_interno_temp;
+    reg [1:0] Umbral_MF_bajo_interno_temp;
+    reg [1:0] Umbral_VC_bajo_interno_temp;
+    reg [1:0] Umbral_D_bajo_interno_temp;
     reg error_out_temp;
     reg [4:0] errors_out_temp;
     reg active_out_temp;
@@ -37,9 +46,12 @@ module maquina (
 
     always @ (posedge clk) begin
         if (!reset) begin
-            Umbrales_MFs_internos <= 00;
-            Umbrales_VCs_internos <= 00;
-            Umbrales_Ds_internos <= 00;
+            Umbral_MF_alto_interno <= 00;
+            Umbral_VC_alto_interno <= 00;
+            Umbral_D_alto_interno <= 00;
+            Umbral_MF_bajo_interno <= 00;
+            Umbral_VC_bajo_interno <= 00;
+            Umbral_D_bajo_interno <= 00;
             error_out <= 0;
             errors_out <= 00000;
             active_out <= 0;
@@ -48,9 +60,12 @@ module maquina (
         end
 
         else begin
-            Umbrales_MFs_internos <= Umbrales_MFs_internos_temp;
-            Umbrales_VCs_internos <= Umbrales_VCs_internos_temp;
-            Umbrales_Ds_internos <= Umbrales_Ds_internos_temp;
+            Umbral_MF_alto_interno <= Umbral_MF_alto_interno_temp;
+            Umbral_VC_alto_interno <= Umbral_VC_alto_interno_temp;
+            Umbral_D_alto_interno <= Umbral_D_alto_interno_temp;
+            Umbral_MF_bajo_interno <= Umbral_MF_bajo_interno_temp;
+            Umbral_VC_bajo_interno <= Umbral_VC_bajo_interno_temp;
+            Umbral_D_bajo_interno <= Umbral_D_bajo_interno_temp;
             error_out <= error_out_temp;
             errors_out <= errors_out_temp;
             active_out <= active_out_temp;
@@ -71,9 +86,12 @@ module maquina (
         active_out_temp = 0;
         error_out_temp = 0;
         errors_out_temp = 00000;
-        Umbrales_MFs_internos_temp = Umbrales_MFs_internos;
-        Umbrales_VCs_internos_temp = Umbrales_VCs_internos;
-        Umbrales_Ds_internos_temp = Umbrales_Ds_internos;
+        Umbral_MF_alto_interno_temp = Umbral_MF_alto_interno;
+        Umbral_VC_alto_interno_temp = Umbral_VC_alto_interno;
+        Umbral_D_alto_interno_temp = Umbral_D_alto_interno;
+        Umbral_MF_bajo_interno_temp = Umbral_MF_bajo_interno;
+        Umbral_VC_bajo_interno_temp = Umbral_VC_bajo_interno;
+        Umbral_D_bajo_interno_temp = Umbral_D_bajo_interno;
 
         estado_proximo = estado;
 
@@ -87,9 +105,12 @@ module maquina (
 
             INIT: begin
 
-                Umbrales_MFs_internos_temp = Umbrales_MFs;
-                Umbrales_VCs_internos_temp = Umbrales_VCs;
-                Umbrales_Ds_internos_temp = Umbrales_Ds;
+                Umbral_MF_alto_interno_temp = Umbral_MF_alto;
+                Umbral_VC_alto_interno_temp = Umbral_VC_alto;
+                Umbral_D_alto_interno_temp = Umbral_D_alto;
+                Umbral_MF_bajo_interno_temp = Umbral_MF_bajo;
+                Umbral_VC_bajo_interno_temp = Umbral_VC_bajo;
+                Umbral_D_bajo_interno_temp = Umbral_D_bajo;
 
                 estado_proximo = IDLE;
 

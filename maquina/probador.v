@@ -2,15 +2,22 @@ module probador (
     output reg clk,
     output reg reset,
     output reg init,
-    output reg [1:0] Umbrales_MFs,
-    output reg [1:0] Umbrales_VCs,
-    output reg [1:0] Umbrales_Ds,
+    output reg [1:0] Umbral_MF_alto,
+    output reg [1:0] Umbral_MF_bajo,
+    output reg [1:0] Umbral_VC_alto,
+    output reg [1:0] Umbral_VC_bajo,
+    output reg [1:0] Umbral_D_alto,
+    output reg [1:0] Umbral_D_bajo,
     output reg [4:0] FIFO_empties,
     output reg [4:0] FIFO_errors,
-    input [1:0] Umbrales_MFs_internos,
-    input [1:0] Umbrales_VCs_internos,
-    input [1:0] Umbrales_Ds_internos,
+    input[1:0] Umbral_MF_alto_interno,
+    input[1:0] Umbral_MF_bajo_interno,
+    input[1:0] Umbral_VC_alto_interno,
+    input[1:0] Umbral_VC_bajo_interno,
+    input[1:0] Umbral_D_alto_interno,
+    input[1:0] Umbral_D_bajo_interno,
     input error_out,
+    input [4:0] errors_out,
     input active_out,
     input idle_out);
 
@@ -21,9 +28,12 @@ module probador (
         // valores iniciales
         reset <= 0;
         init <= 0;
-        Umbrales_MFs <= 00;
-        Umbrales_VCs <= 00;
-        Umbrales_Ds <= 00;
+        Umbral_MF_alto <= 00;
+        Umbral_VC_alto <= 00;
+        Umbral_D_alto <= 00;
+        Umbral_MF_bajo <= 00;
+        Umbral_VC_bajo <= 00;
+        Umbral_D_bajo <= 00;
         FIFO_empties <= 'b11111; // Todos estan activos
         FIFO_errors <= 'b00000; // Ninguno tiene error
 
@@ -33,9 +43,12 @@ module probador (
 
         @(posedge clk);
         reset <= 1;
-        Umbrales_MFs <= 11;
-        Umbrales_VCs <= 10;
-        Umbrales_Ds <= 01;
+        Umbral_MF_alto <= 01;
+        Umbral_VC_alto <= 10;
+        Umbral_D_alto <= 11;
+        Umbral_MF_bajo <= 10;
+        Umbral_VC_bajo <= 01;
+        Umbral_D_bajo <= 11;
 
         @(posedge clk);
         @(posedge clk);
@@ -44,9 +57,12 @@ module probador (
 
         @(posedge clk);
         FIFO_empties <= 'b01011;
-        Umbrales_MFs <= 10;
-        Umbrales_VCs <= 01;
-        Umbrales_Ds <= 11;
+        Umbral_MF_alto <= 10;
+        Umbral_VC_alto <= 01;
+        Umbral_D_alto <= 10;
+        Umbral_MF_bajo <= 11;
+        Umbral_VC_bajo <= 11;
+        Umbral_D_bajo <= 00;
 
         @(posedge clk);
 

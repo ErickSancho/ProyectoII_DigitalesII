@@ -11,4 +11,4 @@ abc -liberty cmos_cells.lib
 
 clean
 
-write_verilog maquina_E.v 
+write_verilog maquina_synth.v 
