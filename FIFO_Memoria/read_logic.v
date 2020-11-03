@@ -13,13 +13,14 @@ module read_logic
     output reg pop
 );
 
+//Control de senal de pop, a partir de fifo_rd y fifo_empty
 always @(*) begin
     if (reset_L) begin
         if (fifo_rd && !fifo_empty) begin
             pop = 1;
         end
         else begin
-            pop = 0;
+            pop = 0; //Caso que el fifo este vacio y se intente leer la memoria
         end
     end
     else begin
@@ -28,6 +29,8 @@ always @(*) begin
     
 end
 
+
+//Control del puntero del lectura, a partir de fifo_rd y fifo_empty
 always @(posedge clk) begin
     if (!reset_L) begin
         rd_ptr <= 0;

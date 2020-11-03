@@ -74,10 +74,10 @@ Cleaned up 0 empty switches.
 7.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
 Marked 6 switch rules as full_case in process $proc$control_logic.v:48$47 in module control_logic.
 Marked 3 switch rules as full_case in process $proc$control_logic.v:22$44 in module control_logic.
-Marked 1 switch rules as full_case in process $proc$write_logic.v:30$38 in module write_logic.
-Marked 2 switch rules as full_case in process $proc$write_logic.v:16$35 in module write_logic.
-Marked 1 switch rules as full_case in process $proc$read_logic.v:31$29 in module read_logic.
-Marked 2 switch rules as full_case in process $proc$read_logic.v:16$26 in module read_logic.
+Marked 1 switch rules as full_case in process $proc$write_logic.v:32$38 in module write_logic.
+Marked 2 switch rules as full_case in process $proc$write_logic.v:17$35 in module write_logic.
+Marked 1 switch rules as full_case in process $proc$read_logic.v:34$29 in module read_logic.
+Marked 2 switch rules as full_case in process $proc$read_logic.v:17$26 in module read_logic.
 Marked 2 switch rules as full_case in process $proc$memory.v:19$11 in module memory.
 Removed a total of 0 dead cases.
 
@@ -98,14 +98,14 @@ Creating decoders for process `\control_logic.$proc$control_logic.v:48$47'.
 Creating decoders for process `\control_logic.$proc$control_logic.v:22$44'.
      1/2: $0\almost_empty[0:0]
      2/2: $0\almost_full[0:0]
-Creating decoders for process `\write_logic.$proc$write_logic.v:30$38'.
+Creating decoders for process `\write_logic.$proc$write_logic.v:32$38'.
      1/1: $0\wr_ptr[2:0]
-Creating decoders for process `\write_logic.$proc$write_logic.v:16$35'.
+Creating decoders for process `\write_logic.$proc$write_logic.v:17$35'.
      1/2: $2\push[0:0]
      2/2: $1\push[0:0]
-Creating decoders for process `\read_logic.$proc$read_logic.v:31$29'.
+Creating decoders for process `\read_logic.$proc$read_logic.v:34$29'.
      1/1: $0\rd_ptr[2:0]
-Creating decoders for process `\read_logic.$proc$read_logic.v:16$26'.
+Creating decoders for process `\read_logic.$proc$read_logic.v:17$26'.
      1/2: $2\pop[0:0]
      2/2: $1\pop[0:0]
 Creating decoders for process `\memory.$proc$memory.v:19$11'.
@@ -123,8 +123,8 @@ Creating decoders for process `\fifo.$proc$fifo.v:79$1'.
 7.7. Executing PROC_DLATCH pass (convert process syncs to latches).
 No latch inferred for signal `\control_logic.\almost_empty' from process `\control_logic.$proc$control_logic.v:22$44'.
 No latch inferred for signal `\control_logic.\almost_full' from process `\control_logic.$proc$control_logic.v:22$44'.
-No latch inferred for signal `\write_logic.\push' from process `\write_logic.$proc$write_logic.v:16$35'.
-No latch inferred for signal `\read_logic.\pop' from process `\read_logic.$proc$read_logic.v:16$26'.
+No latch inferred for signal `\write_logic.\push' from process `\write_logic.$proc$write_logic.v:17$35'.
+No latch inferred for signal `\read_logic.\pop' from process `\read_logic.$proc$read_logic.v:17$26'.
 No latch inferred for signal `\fifo.\fifo_data_out' from process `\fifo.$proc$fifo.v:79$1'.
 No latch inferred for signal `\fifo.\data_in_MM' from process `\fifo.$proc$fifo.v:79$1'.
 
@@ -137,9 +137,9 @@ Creating register for signal `\control_logic.\fifo_empty' using process `\contro
   created $dff cell `$procdff$223' with positive edge clock.
 Creating register for signal `\control_logic.\counter' using process `\control_logic.$proc$control_logic.v:48$47'.
   created $dff cell `$procdff$224' with positive edge clock.
-Creating register for signal `\write_logic.\wr_ptr' using process `\write_logic.$proc$write_logic.v:30$38'.
+Creating register for signal `\write_logic.\wr_ptr' using process `\write_logic.$proc$write_logic.v:32$38'.
   created $dff cell `$procdff$225' with positive edge clock.
-Creating register for signal `\read_logic.\rd_ptr' using process `\read_logic.$proc$read_logic.v:31$29'.
+Creating register for signal `\read_logic.\rd_ptr' using process `\read_logic.$proc$read_logic.v:34$29'.
   created $dff cell `$procdff$226' with positive edge clock.
 Creating register for signal `\memory.\data_out_MM' using process `\memory.$proc$memory.v:19$11'.
   created $dff cell `$procdff$227' with positive edge clock.
@@ -165,14 +165,14 @@ Found and cleaned up 9 empty switches in `\control_logic.$proc$control_logic.v:4
 Removing empty process `control_logic.$proc$control_logic.v:48$47'.
 Found and cleaned up 3 empty switches in `\control_logic.$proc$control_logic.v:22$44'.
 Removing empty process `control_logic.$proc$control_logic.v:22$44'.
-Found and cleaned up 3 empty switches in `\write_logic.$proc$write_logic.v:30$38'.
-Removing empty process `write_logic.$proc$write_logic.v:30$38'.
-Found and cleaned up 2 empty switches in `\write_logic.$proc$write_logic.v:16$35'.
-Removing empty process `write_logic.$proc$write_logic.v:16$35'.
-Found and cleaned up 3 empty switches in `\read_logic.$proc$read_logic.v:31$29'.
-Removing empty process `read_logic.$proc$read_logic.v:31$29'.
-Found and cleaned up 2 empty switches in `\read_logic.$proc$read_logic.v:16$26'.
-Removing empty process `read_logic.$proc$read_logic.v:16$26'.
+Found and cleaned up 3 empty switches in `\write_logic.$proc$write_logic.v:32$38'.
+Removing empty process `write_logic.$proc$write_logic.v:32$38'.
+Found and cleaned up 2 empty switches in `\write_logic.$proc$write_logic.v:17$35'.
+Removing empty process `write_logic.$proc$write_logic.v:17$35'.
+Found and cleaned up 3 empty switches in `\read_logic.$proc$read_logic.v:34$29'.
+Removing empty process `read_logic.$proc$read_logic.v:34$29'.
+Found and cleaned up 2 empty switches in `\read_logic.$proc$read_logic.v:17$26'.
+Removing empty process `read_logic.$proc$read_logic.v:17$26'.
 Found and cleaned up 3 empty switches in `\memory.$proc$memory.v:19$11'.
 Removing empty process `memory.$proc$memory.v:19$11'.
 Removing empty process `fifo.$proc$fifo.v:79$1'.
@@ -1283,6 +1283,6 @@ Dumping module `\memory'.
 Dumping module `\read_logic'.
 Dumping module `\write_logic'.
 
-End of script. Logfile hash: cd92ecc1c1, CPU: user 0.39s system 0.02s, MEM: 22.31 MB peak
+End of script. Logfile hash: f0ada7ccd1, CPU: user 0.38s system 0.01s, MEM: 21.97 MB peak
 Yosys 0.9+3565 (git sha1 474cd02e, gcc 9.3.0-10ubuntu2 -fPIC -Os)
-Time spent: 40% 1x abc (0 sec), 16% 16x opt_expr (0 sec), ...
+Time spent: 41% 1x abc (0 sec), 15% 16x opt_expr (0 sec), ...
