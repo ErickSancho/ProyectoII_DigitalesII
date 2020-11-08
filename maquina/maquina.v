@@ -2,20 +2,20 @@ module maquina (
     input clk,
     input reset,
     input init,
-    input [1:0] Umbral_MF_alto,
-    input [1:0] Umbral_MF_bajo,
-    input [1:0] Umbral_VC_alto,
-    input [1:0] Umbral_VC_bajo,
-    input [1:0] Umbral_D_alto,
-    input [1:0] Umbral_D_bajo,
+    input [4:0] Umbral_MF_alto,
+    input [4:0] Umbral_MF_bajo,
+    input [4:0] Umbral_VC_alto,
+    input [4:0] Umbral_VC_bajo,
+    input [4:0] Umbral_D_alto,
+    input [4:0] Umbral_D_bajo,
     input [4:0] FIFO_empties,
     input [4:0] FIFO_errors,
-    output reg [1:0] Umbral_MF_alto_interno,
-    output reg [1:0] Umbral_MF_bajo_interno,
-    output reg [1:0] Umbral_VC_alto_interno,
-    output reg [1:0] Umbral_VC_bajo_interno,
-    output reg [1:0] Umbral_D_alto_interno,
-    output reg [1:0] Umbral_D_bajo_interno,
+    output reg [4:0] Umbral_MF_alto_interno,
+    output reg [4:0] Umbral_MF_bajo_interno,
+    output reg [4:0] Umbral_VC_alto_interno,
+    output reg [4:0] Umbral_VC_bajo_interno,
+    output reg [4:0] Umbral_D_alto_interno,
+    output reg [4:0] Umbral_D_bajo_interno,
     output reg error_out,
     output reg [4:0] errors_out,
     output reg active_out,
@@ -24,12 +24,12 @@ module maquina (
     reg [4:0] estado, estado_proximo;
 
     // Salidas intermedias:
-    reg [1:0] Umbral_MF_alto_interno_temp;
-    reg [1:0] Umbral_VC_alto_interno_temp;
-    reg [1:0] Umbral_D_alto_interno_temp;
-    reg [1:0] Umbral_MF_bajo_interno_temp;
-    reg [1:0] Umbral_VC_bajo_interno_temp;
-    reg [1:0] Umbral_D_bajo_interno_temp;
+    reg [4:0] Umbral_MF_alto_interno_temp;
+    reg [4:0] Umbral_VC_alto_interno_temp;
+    reg [4:0] Umbral_D_alto_interno_temp;
+    reg [4:0] Umbral_MF_bajo_interno_temp;
+    reg [4:0] Umbral_VC_bajo_interno_temp;
+    reg [4:0] Umbral_D_bajo_interno_temp;
     reg error_out_temp;
     reg [4:0] errors_out_temp;
     reg active_out_temp;
