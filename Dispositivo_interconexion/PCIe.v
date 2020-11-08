@@ -121,13 +121,13 @@ fifo FIFO_VC0(/**/
 	      // Outputs
 	      .fifo_data_out		(data_in_0[5:0]),
 	      .error			(FIFO_errors[3]),
-	      .almost_empty		(almost_empty),
+	      .almost_empty		(vc0_empty),
 	      .almost_full		(pause_vc0),
 	      .fifo_full		(fifo_full),
 	      .fifo_empty		(fifo_empty),
 	      // Inputs
 	      .fifo_wr			(push_0),
-	      .fifo_rd			(fifo_rd),
+	      .fifo_rd			(pop_vc0),
 	      .fifo_data_in		(data_out_0[5:0]]),
 	      .full_threshold		(Umbral_VC_alto_interno[PTR_L-1:0]),
 	      .empty_threshold		(Umbral_VC_bajo_interno[PTR_L-1:0]),
@@ -138,13 +138,13 @@ fifo FIFO_VC1(/**/
 	      // Outputs
 	      .fifo_data_out		(data_in_1[5:0]),
 	      .error			(FIFO_errors[2]),
-	      .almost_empty		(almost_empty),
+	      .almost_empty		(vc0_empty),
 	      .almost_full		(pause_vc1),
 	      .fifo_full		(fifo_full),
 	      .fifo_empty		(fifo_empty),
 	      // Inputs
 	      .fifo_wr			(push_1),
-	      .fifo_rd			(fifo_rd),
+	      .fifo_rd			(pop_vc1),
 	      .fifo_data_in		(data_out_1[5:0]),
 	      .full_threshold		(Umbral_VC_alto_interno[PTR_L-1:0]),
 	      .empty_threshold		(Umbral_VC_bajo_interno[PTR_L-1:0]),
@@ -170,18 +170,18 @@ mux MUX(/**/
 	.data_out			(data_out[5:0]),
 	// Inputs
 	.data_in_0			(data_in_0[5:0]),
-	.valid_in0			(valid_in0),
+	.valid_in0			(valid_vc0),
 	.data_in_1			(data_in_1[5:0]),
-	.valid_in1			(valid_in1));
+	.valid_in1			(valid_vc1));
 
 demux demux_DEST(/**/
 		 // Outputs
-		 .data_out_0		(data_out_0[5:0]),
-		 .data_out_1		(data_out_1[5:0]),
+		 .data_out_0		(data_out_dest_0[5:0]),
+		 .data_out_1		(data_out_dest_1[5:0]),
 		 .push_0		(push_0),
 		 .push_1		(push_1),
 		 // Inputs
-		 .data_in		(data_in[5:0]),
+		 .data_in		(data_out[5:0]),
 		 .valid_in		(valid_in),
 		 .selector		(selector));
 
@@ -196,7 +196,7 @@ fifo FIFO_D0(/**/
 	     // Inputs
 	     .fifo_wr			(fifo_wr),
 	     .fifo_rd			(fifo_rd),
-	     .fifo_data_in		(fifo_data_in[WORD_SIZE-1:0]),
+	     .fifo_data_in		(data_out_dest_0[5:0]),
 	     .full_threshold		(Umbral_D_alto[PTR_L-1:0]),
 	     .empty_threshold		(Umbral_D_bajo[PTR_L-1:0]),
 	     .clk			(clk),
@@ -213,7 +213,7 @@ fifo FIFO_D1(/**/
 	     // Inputs
 	     .fifo_wr			(fifo_wr),
 	     .fifo_rd			(fifo_rd),
-	     .fifo_data_in		(fifo_data_in[WORD_SIZE-1:0]),
+	     .fifo_data_in		(data_out_dest_1[5:0]),
 	     .full_threshold		(Umbral_D_alto[PTR_L-1:0]),
 	     .empty_threshold		(Umbral_D_bajo[PTR_L-1:0]),
 	     .clk			(clk),
