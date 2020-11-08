@@ -1,0 +1,14 @@
+read_verilog Empty_and_pause.v
+hierarchy -check -top Empty_and_pause
+
+proc; opt; fsm; opt; memory; opt
+
+techmap; opt
+
+dfflibmap -liberty cmos_cells.lib
+
+abc -liberty cmos_cells.lib
+
+clean
+
+write_verilog Empty_and_pause_Sint.v 

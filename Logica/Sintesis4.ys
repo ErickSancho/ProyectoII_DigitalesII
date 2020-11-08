@@ -1,0 +1,14 @@
+read_verilog Pop_Main_and_Valid.v
+hierarchy -check -top Pop_Main_and_Valid
+
+proc; opt; fsm; opt; memory; opt
+
+techmap; opt
+
+dfflibmap -liberty cmos_cells.lib
+
+abc -liberty cmos_cells.lib
+
+clean
+
+write_verilog Pop_Main_and_Valid_Sint.v 
