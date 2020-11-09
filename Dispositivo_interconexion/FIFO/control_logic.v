@@ -2,7 +2,7 @@ module control_logic
 #(
     parameter MEM_SIZE = 4,   //Tamano de memoria (Cantidad de entradas)
     parameter WORD_SIZE = 6,   //Cantidad de bits
-    parameter PTR_L = 3        //Longitud de bits de las senales que son de tamano igual a la cantidad de entradas de la memoria
+    parameter PTR_L = 5        //Longitud de bits de las senales que son de tamano igual a la cantidad de entradas de la memoria
 )
 (
     input [PTR_L-1:0] full_threshold,
@@ -73,7 +73,7 @@ always @ (posedge clk) begin
         else if (fifo_wr && ~fifo_rd && ~fifo_full) begin
             counter <= counter + 1;
             error <= 0;
-            if (counter == MEM_SIZE-1) begin
+            if (counter == MEM_SIZE) begin
                 fifo_full <= 1;
             end 
             else if (counter >= 0) begin

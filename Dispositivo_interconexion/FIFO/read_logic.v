@@ -2,7 +2,7 @@ module read_logic
 #(
     parameter MEM_SIZE = 4,   //Tamano de memoria (Cantidad de entradas)
     parameter WORD_SIZE = 6,    //Cantidad de bits
-    parameter PTR_L = 3        //Longitud de bits para el puntero
+    parameter PTR_L = 5        //Longitud de bits para el puntero
 )
 (
     input fifo_rd,
