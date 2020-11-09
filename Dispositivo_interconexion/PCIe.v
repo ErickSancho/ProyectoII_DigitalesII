@@ -3,6 +3,7 @@
 module PCIe
 #(
     parameter MEM_SIZE = 4,     //Tamano de memoria (Cantidad de entradas)
+    parameter MEM_SIZE_VCs = 16,     //Tamano de memoria (Cantidad de entradas)
     parameter WORD_SIZE = 6,    //Cantidad de bits
     parameter PTR_L = 5         //Longitud de bits para el puntero
 )
@@ -57,7 +58,8 @@ wire			valid_pop_out;		// From logica_main_Pop_Push of Pop_Main_and_Valid.v
 wire [4:0] FIFO_empties;
 wire [4:0] FIFO_errors;
 wire [5:0] data_in_0, data_in_1;
-wire [5:0] data_out_dest_0, data_out_dest_1;
+wire [5:0] data_out_dest_0;
+wire [5:0] data_out_dest_1;
 wire pause_d0, pause_d1;
 
 wire vc0_empty, vc1_empty;
@@ -126,7 +128,9 @@ demux demux_main_Vcs(/**/
 		     .valid_in		(valid_pop_out),
 		     .selector		(fifo_data_out[5]));
 
-fifo FIFO_VC0(/**/
+fifo #(.MEM_SIZE (MEM_SIZE_VCs)
+        )FIFO_VC0
+        (/**/
 	      // Outputs
 	      .fifo_data_out		(data_in_0[5:0]),
 	      .error			(FIFO_errors[3]),
@@ -143,7 +147,9 @@ fifo FIFO_VC0(/**/
 	      .clk			(clk),
 	      .reset_L			(reset));
 
-fifo FIFO_VC1(/**/
+fifo  #(.MEM_SIZE (MEM_SIZE_VCs)
+        )FIFO_VC1
+        (/**/
 	      // Outputs
 	      .fifo_data_out		(data_in_1[5:0]),
 	      .error			(FIFO_errors[2]),
@@ -183,6 +189,10 @@ mux MUX(/**/
 	.data_in_1			(data_in_1[5:0]),
 	.valid_in1			(valid_vc1));
 
+// Logica para el valid del Demux Dest
+wire valid_DEST;
+assign valid_DEST = valid_vc0 || valid_vc1;
+
 demux demux_DEST(/**/
 		 // Outputs
 		 .data_out_0		(data_out_dest_0[5:0]),
@@ -191,7 +201,7 @@ demux demux_DEST(/**/
 		 .push_1		(push_1_dest),
 		 // Inputs
 		 .data_in		(data_out[5:0]),
-		 .valid_in		(valid_in),
+		 .valid_in		(valid_DEST),
 		 .selector		(selector));
 
 fifo FIFO_D0(/**/

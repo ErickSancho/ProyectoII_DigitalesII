@@ -28,7 +28,7 @@ wire [PTR_L-1:0]	rd_ptr;			// From read_log of read_logic.v
 wire [PTR_L-1:0]	wr_ptr;			// From write_log of write_logic.v
 // End of automatics
 
-write_logic write_log(/*AUTOINST*/
+write_logic #(.MEM_SIZE (MEM_SIZE))write_log(/*AUTOINST*/
 		      // Outputs
 		      .wr_ptr		(wr_ptr[PTR_L-1:0]),
 		      .push		(push),
@@ -38,7 +38,7 @@ write_logic write_log(/*AUTOINST*/
 		      .clk		(clk),
 		      .reset_L		(reset_L));
 
-read_logic read_log(/*AUTOINST*/
+read_logic #(.MEM_SIZE (MEM_SIZE))read_log(/*AUTOINST*/
 		    // Outputs
 		    .rd_ptr		(rd_ptr[PTR_L-1:0]),
 		    .pop		(pop),
@@ -48,7 +48,7 @@ read_logic read_log(/*AUTOINST*/
 		    .clk		(clk),
 		    .reset_L		(reset_L));
 
-control_logic control_log(/*AUTOINST*/
+control_logic #(.MEM_SIZE (MEM_SIZE))control_log(/*AUTOINST*/
 			  // Outputs
 			  .error		(error),
 			  .almost_empty		(almost_empty),
@@ -63,7 +63,7 @@ control_logic control_log(/*AUTOINST*/
 			  .clk			(clk),
 			  .reset_L		(reset_L));
 
-memory memoria(/*AUTOINST*/
+memory #(.MEM_SIZE (MEM_SIZE))memoria(/*AUTOINST*/
 	       // Outputs
 	       .data_out_MM		(data_out_MM[WORD_SIZE-1:0]),
 	       // Inputs

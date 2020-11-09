@@ -40,8 +40,8 @@ module probador
         umbral_D_empty <= 0;
         data_in <= 0;
         push_data_in <= 0;
-        pop_D0 <= 0;
-        pop_D1 <= 0;
+        // pop_D0 <= 0;
+        // pop_D1 <= 0;
 
         repeat(6) begin
             @(posedge clk);
@@ -60,10 +60,13 @@ module probador
         umbral_D_full <= 3; // 1 menos del total
         umbral_D_empty <= 1;
         
+
         @(posedge clk);
         repeat(40) begin
             @(posedge clk);
             data_in <= data_in + 1; // Todos irian a VC0 y D0
+            // pop_D0 <= $random;
+            // pop_D1 <= $random;
             if (!MAIN_FIFO_pause) begin
                 push_data_in<=1;
             end
@@ -73,19 +76,27 @@ module probador
         end
         repeat (20) begin
             @(posedge clk);
-            pop_D0 <= 1;
+            // pop_D0 <= 1;
+            // pop_D1 <= 1;
         end
 
 
         @(posedge clk);
-        pop_D0 <= 0;
-        pop_D1 <= 0; // Deberia dar error
+        // pop_D0 <= 0;
+        // pop_D1 <= 0; // Deberia dar error
         
         $finish;
     end
 
     // clock
     initial clk <= 0;
-    always #20 clk <= ~clk; //hace toggle cada 20 nanosegundos
+    always #1 clk <= ~clk; //hace toggle cada 20 nanosegundos
+
+    initial pop_D0 <= 0;
+    always #8 pop_D0 <= ~pop_D0; //hace toggle cada 20 nanosegundos
+
+    initial pop_D1 <= 1;
+    always #8 pop_D1 <= ~pop_D1; //hace toggle cada 20 nanosegundos
+
 
 endmodule

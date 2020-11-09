@@ -73,7 +73,7 @@ always @ (posedge clk) begin
         else if (fifo_wr && ~fifo_rd && ~fifo_full) begin
             counter <= counter + 1;
             error <= 0;
-            if (counter == MEM_SIZE) begin
+            if (counter == MEM_SIZE-1) begin
                 fifo_full <= 1;
             end 
             else if (counter >= 0) begin
