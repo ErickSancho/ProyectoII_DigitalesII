@@ -1,0 +1,21 @@
+# read design
+read_verilog PCIe.v FIFO/fifo.v FIFO/control_logic.v FIFO/memory.v FIFO/read_logic.v FIFO/write_logic.v Logica/demux.v Logica/Empty_and_pause.v Logica/mux.v Logica/Pop_Main_and_Valid.v Maquina/maquina.v 
+hierarchy -check -top PCIe
+
+# the high-level stuff
+proc; opt; fsm; opt; memory; opt
+
+# mapping to internal cell library
+techmap; opt
+
+# mapping flip-flops to cmos_cells.lib
+dfflibmap -liberty cmos_cells.lib
+
+# mapping logic to cmos_cells.lib
+abc -liberty cmos_cells.lib
+
+# cleanup
+clean
+
+# write synthesized design
+write_verilog PCIe_synth.v

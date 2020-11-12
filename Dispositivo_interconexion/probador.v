@@ -22,8 +22,18 @@ module probador
     input active_out,
     input idle_out,
     input [4:0] errors,
-    input MAIN_FIFO_pause
-    );
+    input almost_empty_d0,
+    input almost_empty_d1,
+    input MAIN_FIFO_pause,
+    input [5:0] data_out0_synth,
+    input [5:0] data_out1_synth,
+    input error_out_synth,
+    input active_out_synth,
+    input idle_out_synth,
+    input [4:0] errors_synth,
+    input MAIN_FIFO_pause_synth,
+    input almost_empty_d0_synth,
+    input almost_empty_d1_synth);
 
     initial begin
         $dumpfile("dispositivo.vcd");	// Nombre de archivo del "dump"
@@ -40,8 +50,8 @@ module probador
         umbral_D_empty <= 0;
         data_in <= 0;
         push_data_in <= 0;
-        // pop_D0 <= 0;
-        // pop_D1 <= 0;
+        pop_D0 <= 0;
+        pop_D1 <= 0;
 
         repeat(6) begin
             @(posedge clk);
@@ -54,19 +64,42 @@ module probador
         @(posedge clk);
 
         umbral_M_full <= 3; // 1 menos del total
-        umbral_M_empty <= 1;
+        umbral_M_empty <= 2;
         umbral_V_full <= 15; // 1 menos del total
-        umbral_V_empty <= 1;
+        umbral_V_empty <= 2;
         umbral_D_full <= 3; // 1 menos del total
-        umbral_D_empty <= 1;
+        umbral_D_empty <= 2;
         
 
         @(posedge clk);
-        repeat(40) begin
+        repeat(79) begin
             @(posedge clk);
             data_in <= data_in + 1; // Todos irian a VC0 y D0
-            // pop_D0 <= $random;
-            // pop_D1 <= $random;
+            if (!MAIN_FIFO_pause) begin
+                push_data_in<=1;
+            end
+            else 
+                push_data_in<=0;
+            
+        end
+        repeat (10) begin
+            @(posedge clk);
+            data_in<=0;
+            push_data_in<=0;
+        end
+        reset<=0;
+        repeat (10) begin
+            @(posedge clk);
+        end
+        reset<=1;
+        repeat (10) begin
+            @(posedge clk);
+        end
+
+        @(posedge clk);
+        repeat(80) begin
+            @(posedge clk);
+            data_in <= $random; // Todos irian a VC0 y D0
             if (!MAIN_FIFO_pause) begin
                 push_data_in<=1;
             end
@@ -76,6 +109,7 @@ module probador
         end
         repeat (20) begin
             @(posedge clk);
+            data_in<=0;
             // pop_D0 <= 1;
             // pop_D1 <= 1;
         end
@@ -92,11 +126,26 @@ module probador
     initial clk <= 0;
     always #1 clk <= ~clk; //hace toggle cada 20 nanosegundos
 
-    initial pop_D0 <= 0;
-    always #8 pop_D0 <= ~pop_D0; //hace toggle cada 20 nanosegundos
+    // initial pop_D0 <= 0;
+    // always #8 pop_D0 <= ~pop_D0; //hace toggle cada 20 nanosegundos
 
-    initial pop_D1 <= 1;
-    always #8 pop_D1 <= ~pop_D1; //hace toggle cada 20 nanosegundos
+    // initial pop_D1 <= 1;
+    // always #8 pop_D1 <= ~pop_D1; //hace toggle cada 20 nanosegundos
+    always @(*) begin
+        if(almost_empty_d0_synth) begin
+            pop_D0<=0;
+        end
+        else begin
+            pop_D0<=1;
+        end
+
+        if(almost_empty_d1_synth) begin
+            pop_D0<=0;
+        end
+        else begin
+            pop_D0<=1;
+        end
+    end
 
 
 endmodule

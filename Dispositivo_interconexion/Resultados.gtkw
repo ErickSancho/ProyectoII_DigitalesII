@@ -1,0 +1,131 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Mon Nov  9 02:23:31 2020
+[*]
+[dumpfile] "/home/erick/Escritorio/Proyectos_2020/Proyectos_Digitales_II/Proyecto_2/src/Dispositivo_interconexion/dispositivo.vcd"
+[dumpfile_mtime] "Mon Nov  9 02:06:45 2020"
+[dumpfile_size] 45306
+[savefile] "/home/erick/Escritorio/Proyectos_2020/Proyectos_Digitales_II/Proyecto_2/src/Dispositivo_interconexion/Resultados.gtkw"
+[timestart] 0
+[size] 1920 948
+[pos] -1 -1
+*-44.175755 30000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] banco.
+[treeopen] banco.Disp.
+[treeopen] banco.Disp.FIFO_D1.
+[treeopen] banco.Disp.FIFO_VC1.
+[treeopen] banco.test.
+[sst_width] 275
+[signals_width] 193
+[sst_expanded] 1
+[sst_vpaned_height] 265
+@28
+banco.Disp.FIFOMAin.clk
+@24
+banco.test.data_in[5:0]
+@28
+banco.test.push_data_in
+@200
+-
+@24
+banco.Disp.FIFOMAin.data_in_MM[5:0]
+banco.Disp.FIFOMAin.data_out_MM[5:0]
+@28
+[color] 2
+banco.Disp.FIFOMAin.almost_empty
+[color] 2
+banco.Disp.FIFOMAin.almost_full
+banco.Disp.FIFOMAin.fifo_wr
+banco.Disp.FIFOMAin.fifo_rd
+@200
+-
+-Fifo_VC0
+@24
+banco.Disp.FIFO_VC0.data_in_MM[5:0]
+banco.Disp.FIFO_VC0.data_out_MM[5:0]
+@28
+banco.Disp.Logica_empty_pause.valid_vc0
+banco.Disp.FIFO_VC0.fifo_rd
+banco.Disp.FIFO_VC0.fifo_wr
+@200
+-
+-Fifo_VC1
+@24
+banco.Disp.FIFO_VC1.data_in_MM[5:0]
+banco.Disp.FIFO_VC1.data_out_MM[5:0]
+@28
+banco.Disp.Logica_empty_pause.valid_vc1
+@200
+-
+-Logica_empty_pause
+@28
+banco.Disp.Logica_empty_pause.pop_vc0
+banco.Disp.Logica_empty_pause.pop_vc1
+banco.Disp.Logica_empty_pause.vc0_empty
+banco.Disp.Logica_empty_pause.vc1_empty
+banco.Disp.Logica_empty_pause.pause_d0
+banco.Disp.Logica_empty_pause.pause_d1
+@200
+-
+-MUX
+@22
+banco.Disp.MUX.data_in_0[5:0]
+banco.Disp.MUX.data_in_1[5:0]
+banco.Disp.MUX.data_out[5:0]
+@200
+-
+-Demux_Dest
+@28
+banco.Disp.demux_DEST.data_in[5:0]
+@c00025
+banco.Disp.demux_DEST.data_out_0[5:0]
+@28
+(0)banco.Disp.demux_DEST.data_out_0[5:0]
+(1)banco.Disp.demux_DEST.data_out_0[5:0]
+(2)banco.Disp.demux_DEST.data_out_0[5:0]
+(3)banco.Disp.demux_DEST.data_out_0[5:0]
+(4)banco.Disp.demux_DEST.data_out_0[5:0]
+(5)banco.Disp.demux_DEST.data_out_0[5:0]
+@1401205
+-group_end
+@25
+banco.Disp.demux_DEST.data_out_1[5:0]
+@28
+[color] 2
+banco.Disp.demux_DEST.push_0
+[color] 2
+banco.Disp.demux_DEST.push_1
+@200
+-
+@28
+[color] 1
+banco.Disp.MAQ.FIFO_errors[4:0]
+banco.Disp.MAQ.FIFO_empties[4:0]
+@200
+-
+-fifo_D0
+@24
+banco.Disp.FIFO_D0.data_in_MM[5:0]
+[color] 2
+banco.Disp.FIFO_D0.data_out_MM[5:0]
+@28
+banco.Disp.FIFO_D0.reset_L
+@200
+-
+-fifo_D1
+@24
+banco.Disp.FIFO_D1.data_in_MM[5:0]
+[color] 2
+banco.Disp.FIFO_D1.data_out_MM[5:0]
+@28
+banco.Disp.FIFO_D1.fifo_wr
+[color] 5
+banco.Disp.FIFO_D1.fifo_rd
+banco.Disp.FIFO_D1.almost_empty
+banco.Disp.FIFO_D1.almost_full
+banco.Disp.FIFO_D1.fifo_empty
+banco.Disp.FIFO_D1.fifo_full
+@24
+banco.Disp.FIFO_D1.control_log.counter[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

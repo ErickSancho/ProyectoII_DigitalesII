@@ -39,7 +39,7 @@ always @(*) begin
         end
     end
     else begin
-        almost_empty <= 0;
+        almost_empty <= 1;
         almost_full <= 0;
     end
 end
@@ -50,7 +50,7 @@ always @ (posedge clk) begin
         counter <= 0;
         error <= 0;
         fifo_full <= 0;
-        fifo_empty <= 0;
+        fifo_empty <= 1;
     end 
     else begin
         

@@ -1,5 +1,3 @@
-
-
 module PCIe
 #(
     parameter MEM_SIZE = 4,     //Tamano de memoria (Cantidad de entradas)
@@ -27,8 +25,9 @@ module PCIe
     output active_out,
     output idle_out,
     output [4:0] errors,
-    output MAIN_FIFO_pause
-);
+    output MAIN_FIFO_pause,
+	output almost_empty_d0,
+	output almost_empty_d1);
 
 /*AUT*/
 // Beginning of automatic wires (for undeclared instantiated-module outputs)
@@ -89,11 +88,12 @@ maquina MAQ(/**/
 	    .FIFO_empties		(FIFO_empties[4:0]),
 	    .FIFO_errors		(FIFO_errors[4:0])); 
 
-fifo FIFOMAin(/**/   // Listo
+fifo #(.MEM_SIZE (MEM_SIZE)
+        ) FIFOMAin(/**/   // Listo
 	      // Outputs
 	      .fifo_data_out		(fifo_data_out[WORD_SIZE-1:0]),
 	      .error			(FIFO_errors[4]),
-	      .almost_empty		(empy_main_FIFO),
+	    //   .almost_empty		(empy_main_FIFO),
 	      .almost_full		(MAIN_FIFO_pause),
 	    //   .fifo_full		(fifo_full),   //No se toca por el momento
 	      .fifo_empty		(FIFO_empties[4]),  //No se toca por el momento
@@ -113,7 +113,7 @@ Pop_Main_and_Valid logica_main_Pop_Push(/**/
 					// Inputs
 					.clk		(clk),
 					.reset_L	(reset),
-					.empy_main_FIFO	(empy_main_FIFO),
+					.empy_main_FIFO	(FIFO_empties[4]),
 					.pause_vc0	(pause_vc0),
 					.pause_vc1	(pause_vc1));
 
@@ -175,8 +175,8 @@ Empty_and_pause Logica_empty_pause(/**/
 				   // Inputs
 				   .clk			(clk),
 				   .reset_L		(reset),
-				   .vc0_empty		(vc0_empty),
-				   .vc1_empty		(vc1_empty),
+				   .vc0_empty		(FIFO_empties[3]),
+				   .vc1_empty		(FIFO_empties[2]),
 				   .pause_d0		(pause_d0),
 				   .pause_d1		(pause_d1));
 
@@ -202,36 +202,41 @@ demux demux_DEST(/**/
 		 // Inputs
 		 .data_in		(data_out[5:0]),
 		 .valid_in		(valid_DEST),
-		 .selector		(selector));
+		 .selector		(data_out[4]));
+
+reg flag0;
+reg flag1;
 
 fifo FIFO_D0(/**/
 	     // Outputs
 	     .fifo_data_out		(data_out0[WORD_SIZE-1:0]),
 	     .error			(FIFO_errors[1]),
-	    //  .almost_empty		(almost_empty),
+	     .almost_empty		(almost_empty_d0),
 	     .almost_full		(pause_d0),
 	    //  .fifo_full			(fifo_full),
 	     .fifo_empty		(FIFO_empties[1]),
 	     // Inputs
 	     .fifo_wr			(push_0_dest),
-	     .fifo_rd			(pop_D0),
+	     .fifo_rd			(flag0), ////////
 	     .fifo_data_in		(data_out_dest_0[5:0]),
 	     .full_threshold		(Umbral_D_alto_interno[PTR_L-1:0]),
 	     .empty_threshold		(Umbral_D_bajo_interno[PTR_L-1:0]),
 	     .clk			(clk),
 	     .reset_L			(reset));
 
+
+
 fifo FIFO_D1(/**/
 	     // Outputs
 	     .fifo_data_out		(data_out1[WORD_SIZE-1:0]),
 	     .error			(FIFO_errors[0]),
-	    //  .almost_empty		(almost_empty),
+	     .almost_empty		(almost_empty_d1),
 	     .almost_full		(pause_d1),
 	    //  .fifo_full			(fifo_full),
 	     .fifo_empty		(FIFO_empties[0]),
 	     // Inputs
 	     .fifo_wr			(push_1_dest),
-	     .fifo_rd			(pop_D1),
+	     .fifo_rd			(flag1), ////////
 	     .fifo_data_in		(data_out_dest_1[5:0]),
 	     .full_threshold		(Umbral_D_alto_interno[PTR_L-1:0]),
 	     .empty_threshold		(Umbral_D_bajo_interno[PTR_L-1:0]),
@@ -239,5 +244,10 @@ fifo FIFO_D1(/**/
 	     .reset_L			(reset));
 
 
+
+always @(posedge clk) begin
+    flag0 <= push_0_dest;
+    flag1 <= push_1_dest;
+end
 
 endmodule
