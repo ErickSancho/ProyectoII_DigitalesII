@@ -6,6 +6,7 @@ module read_logic
 )
 (
     input fifo_rd,
+    input fifo_wr, // Se utiliza como senal de control
     input fifo_empty,
     input clk,
     input reset_L,
@@ -16,7 +17,7 @@ module read_logic
 //Control de senal de pop, a partir de fifo_rd y fifo_empty
 always @(*) begin
     if (reset_L) begin
-        if (fifo_rd && !fifo_empty) begin
+        if ((fifo_rd && !fifo_empty) || (fifo_rd && fifo_wr)) begin
             pop = 1;
         end
         else begin
@@ -36,7 +37,7 @@ always @(posedge clk) begin
         rd_ptr <= 0;
     end 
     else begin
-        if (fifo_rd && !fifo_empty) begin
+        if ((fifo_rd && !fifo_empty) || (fifo_rd && fifo_wr)) begin
             rd_ptr <= rd_ptr + 1;
             if (rd_ptr == MEM_SIZE-1) begin 
                 rd_ptr <= 0;
