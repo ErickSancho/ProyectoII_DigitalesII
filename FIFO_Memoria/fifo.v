@@ -34,6 +34,7 @@ write_logic write_log(/*AUTOINST*/
 		      .push		(push),
 		      // Inputs
 		      .fifo_wr		(fifo_wr),
+		      .fifo_rd		(fifo_rd),
 		      .fifo_full	(fifo_full),
 		      .clk		(clk),
 		      .reset_L		(reset_L));
@@ -44,6 +45,7 @@ read_logic read_log(/*AUTOINST*/
 		    .pop		(pop),
 		    // Inputs
 		    .fifo_rd		(fifo_rd),
+		    .fifo_wr		(fifo_wr),
 		    .fifo_empty		(fifo_empty),
 		    .clk		(clk),
 		    .reset_L		(reset_L));
@@ -69,7 +71,7 @@ memory memoria(/*AUTOINST*/
 	       // Inputs
 	       .rd_ptr			(rd_ptr[PTR_L-1:0]),
 	       .wr_ptr			(wr_ptr[PTR_L-1:0]),
-	       .data_in_MM		(data_in_MM[WORD_SIZE-1:0]),  
+	       .data_in_MM		(data_in_MM[WORD_SIZE-1:0]),
 	       .push			(push),
 	       .pop			(pop),
 	       .reset_L			(reset_L),

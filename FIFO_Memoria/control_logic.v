@@ -49,10 +49,10 @@ always @ (posedge clk) begin
     if (!reset_L) begin
         counter <= 0;
         error <= 0;
-        fifo_full <= 0;
-        fifo_empty <= 0;
     end 
     else begin
+
+
         
         //En esta etapa se realiza el control del error, asi como del contador que administra 
         //la cantidad de datos almacenados en memoria. Ademas se lleva el control de las senales 
@@ -63,29 +63,36 @@ always @ (posedge clk) begin
         else if (fifo_rd && ~fifo_wr && ~fifo_empty) begin
             counter <= counter - 1;
             error <= 0;
-            if (counter == 1) begin
-                fifo_empty <= 1;
-            end 
-            else if (counter <= MEM_SIZE+1) begin
-                fifo_full <= 0;
-            end
         end
         else if (fifo_wr && ~fifo_rd && ~fifo_full) begin
             counter <= counter + 1;
             error <= 0;
-            if (counter == MEM_SIZE-1) begin
-                fifo_full <= 1;
-            end 
-            else if (counter >= 0) begin
-                fifo_empty <= 0;
-            end
-        end
-        else if (fifo_wr && fifo_rd && fifo_full) begin
-            counter <= counter - 1;
-            fifo_full <= 0;
         end
         
     end
+end
+
+always @(*) begin
+    if (reset_L) begin
+        if (counter >= MEM_SIZE) begin
+            fifo_full = 1;
+        end 
+        else begin
+            fifo_full = 0;
+        end
+        if (counter <= 0) begin
+            fifo_empty <= 1;
+        end
+        else begin
+            fifo_empty = 0;
+        end    
+    end
+    else begin
+        fifo_full <= 0;
+        fifo_empty <= 0;
+    end
+
+
 end
 
 endmodule

@@ -1,55 +1,111 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Wed Oct 28 17:51:14 2020
+[*] Sat Nov 14 16:43:24 2020
 [*]
 [dumpfile] "/home/erick/Escritorio/Proyectos_2020/Proyectos_Digitales_II/Proyecto_2/src/FIFO_Memoria/Resultados.vcd"
-[dumpfile_mtime] "Wed Oct 28 17:23:49 2020"
-[dumpfile_size] 69766
+[dumpfile_mtime] "Sat Nov 14 16:42:10 2020"
+[dumpfile_size] 82841
 [savefile] "/home/erick/Escritorio/Proyectos_2020/Proyectos_Digitales_II/Proyecto_2/src/FIFO_Memoria/Resultados.gtkw"
-[timestart] 0
+[timestart] 61960000000000
 [size] 1920 948
 [pos] -1 -1
-*-42.926113 23000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-41.996143 76650000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] banco.
 [treeopen] banco.FIFO_estr.
 [sst_width] 233
-[signals_width] 242
+[signals_width] 252
 [sst_expanded] 1
 [sst_vpaned_height] 265
 @28
 banco.FIFO_estr.clk
-banco.probador.reset_L
+banco.FIFO_estr.reset_L
 @22
 banco.FIFO_estr.fifo_data_in[5:0]
+@200
+-
+-OUTPUT
+@c00022
+banco.FIFO_estr.data_out_MM[5:0]
+@28
+(0)banco.FIFO_estr.data_out_MM[5:0]
+(1)banco.FIFO_estr.data_out_MM[5:0]
+(2)banco.FIFO_estr.data_out_MM[5:0]
+(3)banco.FIFO_estr.data_out_MM[5:0]
+(4)banco.FIFO_estr.data_out_MM[5:0]
+(5)banco.FIFO_estr.data_out_MM[5:0]
+@1401200
+-group_end
+@200
+-
+-READ_WRITE
 @28
 banco.FIFO_estr.fifo_rd
 banco.FIFO_estr.fifo_wr
 @200
 -
-@24
+-Contador
+@c00024
+[color] 2
 banco.FIFO_estr.control_log.counter[2:0]
-@22
-banco.FIFO_estr.fifo_data_out_synth[5:0]
-@200
--
-@22
-banco.FIFO_estr.memoria.\Mem[0][5:0]
-banco.FIFO_estr.memoria.\Mem[1][5:0]
-banco.FIFO_estr.memoria.\Mem[2][5:0]
-banco.FIFO_estr.memoria.\Mem[3][5:0]
-@200
--
 @28
-banco.FIFO_estr.control_log.almost_empty_synth
-banco.FIFO_estr.control_log.almost_full_synth
-banco.FIFO_estr.control_log.fifo_empty_synth
-banco.FIFO_estr.control_log.fifo_full_synth
+(0)banco.FIFO_estr.control_log.counter[2:0]
+(1)banco.FIFO_estr.control_log.counter[2:0]
+(2)banco.FIFO_estr.control_log.counter[2:0]
+@1401200
+-group_end
 @200
 -
+-Puntero
+@c00024
+[color] 5
+banco.FIFO_estr.rd_ptr[2:0]
+@28
+(0)banco.FIFO_estr.rd_ptr[2:0]
+(1)banco.FIFO_estr.rd_ptr[2:0]
+(2)banco.FIFO_estr.rd_ptr[2:0]
+@1401200
+-group_end
+@24
+[color] 5
+banco.FIFO_estr.write_log.wr_ptr[2:0]
+@200
+-
+-POP_PUSH
 @28
 banco.FIFO_estr.pop
 banco.FIFO_estr.push
-@201
+@200
 -
+-Almost
+@28
+[color] 2
+banco.FIFO_estr.almost_empty_synth
+[color] 2
+banco.FIFO_estr.almost_full_synth
+@200
+-
+-FULL_Empty
+@28
+[color] 3
+banco.FIFO_estr.fifo_full_synth
+[color] 3
+banco.FIFO_estr.fifo_empty_synth
+@200
+-
+-Error
+@28
+banco.FIFO_estr.control_log.error_synth
+@200
+-
+-Memoria
+@22
+[color] 2
+banco.FIFO_estr.memoria.\Mem[0][5:0]
+[color] 2
+banco.FIFO_estr.memoria.\Mem[1][5:0]
+[color] 2
+banco.FIFO_estr.memoria.\Mem[2][5:0]
+[color] 2
+banco.FIFO_estr.memoria.\Mem[3][5:0]
 [pattern_trace] 1
 [pattern_trace] 0

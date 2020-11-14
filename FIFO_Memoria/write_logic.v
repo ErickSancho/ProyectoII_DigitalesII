@@ -6,6 +6,7 @@ module write_logic
 )
 (
     input fifo_wr,
+    input fifo_rd, // Se utiliza como senal de control
     input fifo_full,
     input clk,
     input reset_L,
@@ -16,7 +17,7 @@ module write_logic
 //Control de la senal push, a partir de la senal de fifo_wr y fifo_full
 always @(*) begin
     if (reset_L) begin
-        if (fifo_wr && !fifo_full) begin
+        if ((fifo_wr && !fifo_full) || (fifo_rd && fifo_wr)) begin
             push = 1;
         end
         else begin 
@@ -34,7 +35,7 @@ always @(posedge clk) begin
         wr_ptr <= 0; //Valor inicial
     end 
     else begin
-        if (fifo_wr && !fifo_full) begin
+        if ((fifo_wr && !fifo_full) || (fifo_rd && fifo_wr)) begin
             wr_ptr <= wr_ptr + 1;
             if (wr_ptr == MEM_SIZE-1) begin //Control reinicio del puntero al menor valor
                 wr_ptr <= 0;

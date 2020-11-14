@@ -36,6 +36,7 @@ module probador
         empty_threshold<=1;
         full_threshold<=MEM_SIZE-1;
         reset_L<=0;
+
         //Secuencia de ciclos con reset = 0
         repeat (5) begin
             @(posedge clk);
@@ -45,25 +46,28 @@ module probador
         @(posedge clk);
         reset_L<=1;
 
-        //Se carga 3 datos en memoria
-        repeat (4) begin
+
+        //Se cargan datos en memoria
+        repeat (3) begin
             @(posedge clk);
             fifo_wr<=1;
             fifo_data_in<=$random;
         end
         
         //Se comienza a leer los datos
+        @(posedge clk);
+        fifo_data_in<=$random;
         fifo_rd<=1;
 
         //Se realiza la lectura y escritura en paralelo por 10 ciclos seguidos
         repeat (10) begin
             @(posedge clk);
-            fifo_data_in<=$random;
+            fifo_data_in<=$random+fifo_data_in;
         end
 
-        //Se termina de leer ingresar datos
+        //Se termina de escribir datos
         @(posedge clk);
-        fifo_data_in<=$random;
+        fifo_data_in<=$random+fifo_data_in;
         fifo_wr<=0;
 
         repeat (3) begin
@@ -76,10 +80,10 @@ module probador
         //Se realiza una prueba de las senales de error, para ello se comienza
         //por el caso de tener la memoria llena y querer seguir ingresando datos.
         
-        repeat (8) begin
+        repeat (7) begin
             @(posedge clk);
             fifo_wr<=1;
-            fifo_data_in<=$random;
+            fifo_data_in<=$random+fifo_data_in;
         end
         
         fifo_wr<=0;

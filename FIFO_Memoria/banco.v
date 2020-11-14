@@ -71,8 +71,8 @@ probador probador(/*AUTOINST*/
 		  .fifo_wr		(fifo_wr),
 		  .empty_threshold	(empty_threshold[PTR_L-1:0]),
 		  .full_threshold	(full_threshold[PTR_L-1:0]),
-		  .clk			(clk),
 		  .reset_L		(reset_L),
+		  .clk			(clk),
 		  // Inputs
 		  .fifo_data_out	(fifo_data_out[WORD_SIZE-1:0]),
 		  .fifo_data_out_synth	(fifo_data_out_synth[WORD_SIZE-1:0]),
