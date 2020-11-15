@@ -64,22 +64,26 @@ module probador
         @(posedge clk);
 
         umbral_M_full <= 3; // 1 menos del total
-        umbral_M_empty <= 2;
-        umbral_V_full <= 15; // 1 menos del total
-        umbral_V_empty <= 2;
+        umbral_M_empty <= 1;
+        umbral_V_full <= 14; // 1 menos del total
+        umbral_V_empty <= 1;
         umbral_D_full <= 3; // 1 menos del total
-        umbral_D_empty <= 2;
+        umbral_D_empty <= 1;
         
 
         @(posedge clk);
         repeat(79) begin
             @(posedge clk);
-            data_in <= data_in + 1; // Todos irian a VC0 y D0
             if (!MAIN_FIFO_pause) begin
                 push_data_in<=1;
+                data_in <= data_in + 1; // Todos irian a VC0 y D0
             end
-            else 
+            else begin
                 push_data_in<=0;
+                data_in<=0;
+            end
+                
+
             
         end
         repeat (10) begin
@@ -99,17 +103,21 @@ module probador
         @(posedge clk);
         repeat(80) begin
             @(posedge clk);
-            data_in <= $random; // Todos irian a VC0 y D0
             if (!MAIN_FIFO_pause) begin
                 push_data_in<=1;
+                data_in <= $random; // Todos irian a VC0 y D0
             end
-            else 
+            else begin
                 push_data_in<=0;
+                data_in<=0;
+            end
+                
             
         end
-        repeat (20) begin
+        repeat (50) begin
             @(posedge clk);
             data_in<=0;
+            push_data_in<=0;
             // pop_D0 <= 1;
             // pop_D1 <= 1;
         end
@@ -132,18 +140,18 @@ module probador
     // initial pop_D1 <= 1;
     // always #8 pop_D1 <= ~pop_D1; //hace toggle cada 20 nanosegundos
     always @(*) begin
-        if(almost_empty_d0_synth) begin
-            pop_D0<=0;
+        if(almost_empty_d0_synth == 1) begin
+            pop_D0=0;
         end
         else begin
-            pop_D0<=1;
+            pop_D0=1;
         end
 
-        if(almost_empty_d1_synth) begin
-            pop_D0<=0;
+        if(almost_empty_d1_synth == 1) begin
+            pop_D1=0;
         end
         else begin
-            pop_D0<=1;
+            pop_D1=1;
         end
     end
 

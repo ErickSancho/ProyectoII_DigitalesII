@@ -204,8 +204,8 @@ demux demux_DEST(/**/
 		 .valid_in		(valid_DEST),
 		 .selector		(data_out[4]));
 
-reg flag0;
-reg flag1;
+// reg flag0;
+// reg flag1;
 
 fifo FIFO_D0(/**/
 	     // Outputs
@@ -217,7 +217,7 @@ fifo FIFO_D0(/**/
 	     .fifo_empty		(FIFO_empties[1]),
 	     // Inputs
 	     .fifo_wr			(push_0_dest),
-	     .fifo_rd			(flag0), ////////
+	     .fifo_rd			(pop_D0), ////////
 	     .fifo_data_in		(data_out_dest_0[5:0]),
 	     .full_threshold		(Umbral_D_alto_interno[PTR_L-1:0]),
 	     .empty_threshold		(Umbral_D_bajo_interno[PTR_L-1:0]),
@@ -236,7 +236,7 @@ fifo FIFO_D1(/**/
 	     .fifo_empty		(FIFO_empties[0]),
 	     // Inputs
 	     .fifo_wr			(push_1_dest),
-	     .fifo_rd			(flag1), ////////
+	     .fifo_rd			(pop_D1), ////////
 	     .fifo_data_in		(data_out_dest_1[5:0]),
 	     .full_threshold		(Umbral_D_alto_interno[PTR_L-1:0]),
 	     .empty_threshold		(Umbral_D_bajo_interno[PTR_L-1:0]),
@@ -245,9 +245,9 @@ fifo FIFO_D1(/**/
 
 
 
-always @(posedge clk) begin
-    flag0 <= push_0_dest;
-    flag1 <= push_1_dest;
-end
+// always @(posedge clk) begin
+//     flag0 <= push_0_dest;
+//     flag1 <= push_1_dest;
+// end
 
 endmodule

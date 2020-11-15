@@ -107,3 +107,10 @@ GTKWAVE | ...waveform reloaded
 GTKWAVE | Reloading waveform...
 GTKWAVE | ...waveform reloaded
 WM Destroy
+Gtk-Message: 21:15:32.985: Failed to load module "canberra-gtk-module"
+
+GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+
+[0] start time.
+[97000000000000] end time.
+WM Destroy

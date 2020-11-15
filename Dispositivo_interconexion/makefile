@@ -19,7 +19,6 @@ sed: yosys
 	@sed -i 's/demux/demux_synth/g' $(ESTR)
 	@sed -i 's/Empty_and_pause/Empty_and_pause_synth/g' $(ESTR)
 	@sed -i 's/mux/mux_synth/g' $(ESTR)
-
 #Senales
 	@sed -i 's/data_out0/data_out0_synth/g' $(ESTR)
 	@sed -i 's/data_out1/data_out1_synth/g' $(ESTR)
@@ -40,6 +39,10 @@ compilar: sed
 
 ver:
 	@nohup gtkwave dispositivo.vcd & 
+
+
+
+
 
 AUTOINST:
 	@emacs --batch ./*.v PCIe.v $(test) -f verilog-batch-auto
