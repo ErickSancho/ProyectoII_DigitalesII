@@ -36,7 +36,7 @@ module probador
     input almost_empty_d1_synth);
 
     initial begin
-        $dumpfile("dispositivo.vcd");	// Nombre de archivo del "dump"
+        $dumpfile("dispositivo_errores.vcd");	// Nombre de archivo del "dump"
 		$dumpvars;			// Directiva para "dumpear" variables
 
         // valores iniciales

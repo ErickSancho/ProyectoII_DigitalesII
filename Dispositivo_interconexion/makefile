@@ -1,12 +1,20 @@
 MAQ = Maquina
 FIFO = FIFO
 LOG = Logica
-test = probador.v banco.v
+test_general = probador.v banco.v
+
+test_errores = banco.v probador_errores.v
+
+test_llenado_vaciado = banco.v probador_llenado_vaciado.v
+
 CMOS = cmos_cells.v
 
 ESTR = PCIe_synth.v
 
 EXE = Dispositivo
+EXE_errores = Dispositivo_errores
+EXE_llenado = Dispositivo_llenado
+
 
 yosys:
 	@yosys script.ys >> Salida_yosys
@@ -32,17 +40,31 @@ sed: yosys
 
 
 
-compilar: sed
+compilar_General: sed
 	@iverilog $(MAQ)/*.v $(FIFO)/*.v $(LOG)/*.v PCIe.v  PCIe_synth.v $(test) $(CMOS) -o $(EXE)
 	@vvp $(EXE)
 
 
-ver:
+ver_General:
 	@nohup gtkwave dispositivo.vcd & 
 
 
+compilar_errores: sed
+	@iverilog $(MAQ)/*.v $(FIFO)/*.v $(LOG)/*.v PCIe.v  PCIe_synth.v $(test_errores) $(CMOS) -o $(EXE_errores)
+	@vvp $(EXE_errores)
 
 
+ver_errores:
+	@nohup gtkwave dispositivo_errores.vcd & 
+
+
+compilar_llenado: sed
+	@iverilog $(MAQ)/*.v $(FIFO)/*.v $(LOG)/*.v PCIe.v  PCIe_synth.v $(test_llenado_vaciado) $(CMOS) -o $(EXE_llenado)
+	@vvp $(EXE_llenado)
+
+
+ver_llenado:
+	@nohup gtkwave dispositivo_llenado_vaciado.vcd & 
 
 AUTOINST:
 	@emacs --batch ./*.v PCIe.v $(test) -f verilog-batch-auto
