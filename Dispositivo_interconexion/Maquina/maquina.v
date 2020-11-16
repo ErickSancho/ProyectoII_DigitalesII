@@ -46,12 +46,12 @@ module maquina (
 
     always @ (posedge clk) begin
         if (!reset) begin
-            Umbral_MF_alto_interno <= 00;
-            Umbral_VC_alto_interno <= 00;
-            Umbral_D_alto_interno <= 00;
-            Umbral_MF_bajo_interno <= 00;
-            Umbral_VC_bajo_interno <= 00;
-            Umbral_D_bajo_interno <= 00;
+            Umbral_MF_alto_interno <= 3;
+            Umbral_VC_alto_interno <= 15;
+            Umbral_D_alto_interno <= 3;
+            Umbral_MF_bajo_interno <= 1;
+            Umbral_VC_bajo_interno <= 1;
+            Umbral_D_bajo_interno <= 1;
             error_out <= 0;
             errors_out <= 00000;
             active_out <= 0;
@@ -143,7 +143,7 @@ module maquina (
                 error_out_temp = 1;
                 errors_out_temp = FIFO_errors_temp;
 
-                if (reset) estado_proximo = RESET;
+                if (!reset) estado_proximo = RESET;
 
             end
 

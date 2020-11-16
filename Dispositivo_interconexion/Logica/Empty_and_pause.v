@@ -10,16 +10,17 @@ module Empty_and_pause (
     output reg pop_vc0,
     output reg pop_vc1);
     
-        
+	
     always @ (*) begin
     	pop_vc0 = 0;
     	pop_vc1 = 0;
-	if (!(pause_d0 || pause_d1)) 
-		if (!vc0_empty) begin
-			pop_vc0 = 1;
-		end
-		if (!vc1_empty) begin
-			pop_vc1 = 1;
+	if (!(pause_d0 || pause_d1)) begin
+			if (!vc0_empty) begin
+				pop_vc0 = 1;
+			end
+			if (!vc1_empty) begin
+				pop_vc1 = 1;
+			end
 		end
     end
 

@@ -269,3 +269,55 @@ GTKWAVE | ...waveform reloaded
 GTKWAVE | Reloading waveform...
 GTKWAVE | ...waveform reloaded
 WM Destroy
+Gtk-Message: 15:11:25.914: Failed to load module "canberra-gtk-module"
+
+GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+
+[0] start time.
+[499000000000000] end time.
+[0] start time.
+[499000000000000] end time.
+Gtk-Message: 15:25:08.470: Failed to load module "canberra-gtk-module"
+
+GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+
+[0] start time.
+[499000000000000] end time.
+[0] start time.
+[381000000000000] end time.
+[0] start time.
+[401000000000000] end time.
+[0] start time.
+[401000000000000] end time.
+[0] start time.
+[401000000000000] end time.
+[0] start time.
+[401000000000000] end time.
+[0] start time.
+[401000000000000] end time.
+[0] start time.
+[401000000000000] end time.
+[0] start time.
+[97000000000000] end time.
+[0] start time.
+[317000000000000] end time.
+[0] start time.
+[287000000000000] end time.
+[0] start time.
+[287000000000000] end time.
+[0] start time.
+[283000000000000] end time.
+[0] start time.
+[289000000000000] end time.
+[0] start time.
+[285000000000000] end time.
+[0] start time.
+[287000000000000] end time.
+[0] start time.
+[287000000000000] end time.
+[0] start time.
+[291000000000000] end time.
+[0] start time.
+[291000000000000] end time.
+[0] start time.
+[287000000000000] end time.

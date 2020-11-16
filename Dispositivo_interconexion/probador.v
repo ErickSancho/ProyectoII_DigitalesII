@@ -53,7 +53,7 @@ module probador
         pop_D0 <= 0;
         pop_D1 <= 0;
 
-        repeat(6) begin
+        repeat(4) begin
             @(posedge clk);
         end
 
@@ -65,15 +65,27 @@ module probador
 
         umbral_M_full <= 3; // 1 menos del total
         umbral_M_empty <= 1;
-        umbral_V_full <= 14; // 1 menos del total
+        umbral_V_full <= 15; // 1 menos del total
         umbral_V_empty <= 1;
         umbral_D_full <= 3; // 1 menos del total
         umbral_D_empty <= 1;
         
 
         @(posedge clk);
-        repeat(79) begin
+        data_in<='b111111;
+        push_data_in <= 1;
+
+        @(posedge clk);
+        data_in<='b111110;
+        push_data_in <= 1;
+
+        @(posedge clk);
+        data_in<=0;
+        push_data_in <= 0;
+
+        repeat(50) begin
             @(posedge clk);
+
             if (!MAIN_FIFO_pause) begin
                 push_data_in<=1;
                 data_in <= data_in + 1; // Todos irian a VC0 y D0
@@ -81,12 +93,10 @@ module probador
             else begin
                 push_data_in<=0;
                 data_in<=0;
-            end
-                
-
-            
+            end           
         end
-        repeat (10) begin
+
+        repeat (5) begin
             @(posedge clk);
             data_in<=0;
             push_data_in<=0;
@@ -118,27 +128,20 @@ module probador
             @(posedge clk);
             data_in<=0;
             push_data_in<=0;
-            // pop_D0 <= 1;
-            // pop_D1 <= 1;
         end
 
 
         @(posedge clk);
-        // pop_D0 <= 0;
-        // pop_D1 <= 0; // Deberia dar error
+
         
         $finish;
     end
-
     // clock
+
     initial clk <= 0;
-    always #1 clk <= ~clk; //hace toggle cada 20 nanosegundos
+    always #1 clk <= ~clk; //hace toggle cada 2 nanosegundos
 
-    // initial pop_D0 <= 0;
-    // always #8 pop_D0 <= ~pop_D0; //hace toggle cada 20 nanosegundos
-
-    // initial pop_D1 <= 1;
-    // always #8 pop_D1 <= ~pop_D1; //hace toggle cada 20 nanosegundos
+    // Control de pop
     always @(*) begin
         if(almost_empty_d0_synth == 1) begin
             pop_D0=0;
