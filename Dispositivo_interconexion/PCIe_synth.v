@@ -8473,7 +8473,7 @@ endmodule
 
 (* dynports =  1  *)
 (* top =  1  *)
-(* src = "PCIe_synth.v:1.1-253.10" *)
+(* src = "PCIe_synth.v:1.1-261.10" *)
 module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full, umbral_V_empty, umbral_D_full, umbral_D_empty, data_in, push_data_in, pop_D0, pop_D1, data_out0_synth, data_out1_synth, error_out_synth, active_out_synth, idle_out_synth, errors_synth, MAIN_FIFO_pause_synth, almost_empty_d0_synth, almost_empty_d1_synth);
   wire _0_;
   (* src = "PCIe_synth.v:57.12-57.24" *)
@@ -8617,7 +8617,6 @@ module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full
   (* module_not_derived = 32'd1 *)
   (* src = "PCIe_synth.v:210.6-225.26" *)
   fifo_synth FIFO_D0 (
-    .almost_empty(almost_empty_d0_synth),
     .almost_full(pause_d0),
     .clk(clk),
     .empty_threshold(Umbral_D_bajo_interno),
@@ -8633,7 +8632,6 @@ module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full
   (* module_not_derived = 32'd1 *)
   (* src = "PCIe_synth.v:229.6-244.26" *)
   fifo_synth FIFO_D1 (
-    .almost_empty(almost_empty_d1_synth),
     .almost_full(pause_d1),
     .clk(clk),
     .empty_threshold(Umbral_D_bajo_interno),
@@ -8757,6 +8755,8 @@ module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full
     .reset_L(reset),
     .valid_pop_out(valid_pop_out)
   );
+  assign almost_empty_d0_synth = push_0_dest;
+  assign almost_empty_d1_synth = push_1_dest;
 endmodule
 
 (* src = "Logica/Pop_Main_and_Valid_synth.v:1.1-24.10" *)

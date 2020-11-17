@@ -1,0 +1,116 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Tue Nov 17 00:47:48 2020
+[*]
+[dumpfile] "/home/erick/Escritorio/Proyectos_2020/Proyectos_Digitales_II/Proyecto_2/src/Dispositivo_interconexion/dispositivo_trafico.vcd"
+[dumpfile_mtime] "Tue Nov 17 00:25:29 2020"
+[dumpfile_size] 646603
+[savefile] "/home/erick/Escritorio/Proyectos_2020/Proyectos_Digitales_II/Proyecto_2/src/Dispositivo_interconexion/resultados_trafico.gtkw"
+[timestart] 1710
+[size] 1920 948
+[pos] -1 -1
+*-14.064326 35000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] banco.
+[treeopen] banco.Disp_sint.
+[treeopen] banco.Disp_sint.FIFO_D0.
+[treeopen] banco.Disp_sint.FIFO_D1.
+[treeopen] banco.Disp_sint.FIFO_VC0.
+[treeopen] banco.Disp_sint.FIFO_VC1.
+[treeopen] banco.Disp_sint.FIFOMAin.
+[sst_width] 233
+[signals_width] 222
+[sst_expanded] 1
+[sst_vpaned_height] 265
+@22
+banco.Disp_sint.FIFOMAin.data_in_MM[5:0]
+banco.Disp_sint.FIFOMAin.fifo_synth_data_out[5:0]
+@200
+-Main
+@22
+banco.Disp_sint.FIFOMAin.memoria.\Mem[0][5:0]
+banco.Disp_sint.FIFOMAin.memoria.\Mem[1][5:0]
+banco.Disp_sint.FIFOMAin.memoria.\Mem[2][5:0]
+banco.Disp_sint.FIFOMAin.memoria.\Mem[3][5:0]
+@200
+-
+-VC0
+@22
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[0][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[1][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[2][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[3][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[4][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[5][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[6][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[7][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[8][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[9][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[10][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[11][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[12][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[13][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[14][5:0]
+banco.Disp_sint.FIFO_VC0.memoria.\Mem[15][5:0]
+@200
+-
+-VC1
+@22
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[0][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[1][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[2][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[3][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[4][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[5][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[6][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[7][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[8][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[9][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[10][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[11][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[12][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[13][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[14][5:0]
+banco.Disp_sint.FIFO_VC1.memoria.\Mem[15][5:0]
+@200
+-
+-D0
+@22
+banco.Disp_sint.FIFO_D0.data_in_MM[5:0]
+[color] 2
+banco.Disp_sint.FIFO_D0.data_out_MM[5:0]
+@28
+banco.Disp_sint.FIFO_D0.almost_empty
+banco.Disp_sint.FIFO_D0.almost_full
+@200
+-
+@22
+banco.Disp_sint.FIFO_D0.memoria.\Mem[0][5:0]
+banco.Disp_sint.FIFO_D0.memoria.\Mem[1][5:0]
+banco.Disp_sint.FIFO_D0.memoria.\Mem[2][5:0]
+banco.Disp_sint.FIFO_D0.memoria.\Mem[3][5:0]
+@200
+-
+-D1
+@22
+banco.Disp_sint.FIFO_D1.data_in_MM[5:0]
+[color] 2
+banco.Disp_sint.FIFO_D1.data_out_MM[5:0]
+@29
+banco.Disp_sint.FIFO_D1.almost_empty
+@28
+banco.Disp_sint.FIFO_D1.almost_full
+@200
+-
+@22
+banco.Disp_sint.FIFO_D1.memoria.\Mem[0][5:0]
+banco.Disp_sint.FIFO_D1.memoria.\Mem[1][5:0]
+banco.Disp_sint.FIFO_D1.memoria.\Mem[2][5:0]
+banco.Disp_sint.FIFO_D1.memoria.\Mem[3][5:0]
+@200
+-
+-POP_PUSH_VC1
+@28
+banco.Disp_sint.FIFO_VC1.fifo_synth_rd
+banco.Disp_sint.FIFO_VC1.fifo_synth_wr
+[pattern_trace] 1
+[pattern_trace] 0

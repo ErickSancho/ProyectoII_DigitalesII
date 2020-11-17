@@ -7,6 +7,8 @@ test_errores = banco.v probador_errores.v
 
 test_llenado_vaciado = banco.v probador_llenado_vaciado.v
 
+test_trafico = banco.v probador_trafico.v
+
 CMOS = cmos_cells.v
 
 ESTR = PCIe_synth.v
@@ -14,6 +16,7 @@ ESTR = PCIe_synth.v
 EXE = Dispositivo
 EXE_errores = Dispositivo_errores
 EXE_llenado = Dispositivo_llenado
+EXE_trafico = Dispositivo_trafico
 
 
 yosys:
@@ -65,6 +68,15 @@ compilar_llenado: sed
 
 ver_llenado:
 	@nohup gtkwave dispositivo_llenado_vaciado.vcd & 
+
+
+compilar_trafico: sed
+	@iverilog $(MAQ)/*.v $(FIFO)/*.v $(LOG)/*.v PCIe.v  PCIe_synth.v $(test_trafico) $(CMOS) -o $(EXE_trafico)
+	@vvp $(EXE_trafico)
+
+
+ver_trafico:
+	@nohup gtkwave dispositivo_trafico.vcd & 
 
 AUTOINST:
 	@emacs --batch ./*.v PCIe.v $(test) -f verilog-batch-auto
