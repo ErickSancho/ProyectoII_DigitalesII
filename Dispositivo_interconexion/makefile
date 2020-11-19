@@ -42,16 +42,16 @@ sed: yosys
 	@sed -i 's/almost_empty_d1/almost_empty_d1_synth/g' $(ESTR)
 
 
-
+#### General ####
 compilar_General: sed
-	@iverilog $(MAQ)/*.v $(FIFO)/*.v $(LOG)/*.v PCIe.v  PCIe_synth.v $(test) $(CMOS) -o $(EXE)
+	@iverilog $(MAQ)/*.v $(FIFO)/*.v $(LOG)/*.v PCIe.v  PCIe_synth.v $(test_general) $(CMOS) -o $(EXE)
 	@vvp $(EXE)
 
 
 ver_General:
 	@nohup gtkwave dispositivo.vcd & 
 
-
+#### Errores ####
 compilar_errores: sed
 	@iverilog $(MAQ)/*.v $(FIFO)/*.v $(LOG)/*.v PCIe.v  PCIe_synth.v $(test_errores) $(CMOS) -o $(EXE_errores)
 	@vvp $(EXE_errores)
@@ -60,7 +60,7 @@ compilar_errores: sed
 ver_errores:
 	@nohup gtkwave dispositivo_errores.vcd & 
 
-
+#### Llendo y vaciado ####
 compilar_llenado: sed
 	@iverilog $(MAQ)/*.v $(FIFO)/*.v $(LOG)/*.v PCIe.v  PCIe_synth.v $(test_llenado_vaciado) $(CMOS) -o $(EXE_llenado)
 	@vvp $(EXE_llenado)

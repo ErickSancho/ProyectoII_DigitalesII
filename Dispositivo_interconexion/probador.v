@@ -141,22 +141,26 @@ module probador
     initial clk <= 0;
     always #1 clk <= ~clk; //hace toggle cada 2 nanosegundos
 
-    // Control de pop
-    always @(*) begin
-        if(almost_empty_d0_synth == 1) begin
-            pop_D0=0;
-        end
-        else begin
-            pop_D0=1;
-        end
-
-        if(almost_empty_d1_synth == 1) begin
-            pop_D1=0;
-        end
-        else begin
-            pop_D1=1;
-        end
+    always @(posedge clk) begin
+        pop_D0 <= almost_empty_d0_synth;
+        pop_D1 <= almost_empty_d1_synth;
     end
 
+    reg error_0, error_1;
+    always @(*) begin
+        if (data_out0 != data_out0_synth) begin
+            error_0 = 0;
+        end
+        else begin
+            error_0 = 0;
+        end
+
+        if (data_out1 != data_out1_synth) begin
+            error_1 = 0;
+        end
+        else begin
+            error_1 = 0;
+        end
+    end
 
 endmodule

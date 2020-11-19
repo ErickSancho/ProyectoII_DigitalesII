@@ -258,4 +258,6 @@ fifo FIFO_D1(/**/
 assign almost_empty_d0 = push_0_dest;
 assign almost_empty_d1 = push_1_dest;
 
+assign errors = FIFO_errors;
+
 endmodule

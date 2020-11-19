@@ -8473,7 +8473,7 @@ endmodule
 
 (* dynports =  1  *)
 (* top =  1  *)
-(* src = "PCIe_synth.v:1.1-261.10" *)
+(* src = "PCIe_synth.v:1.1-263.10" *)
 module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full, umbral_V_empty, umbral_D_full, umbral_D_empty, data_in, push_data_in, pop_D0, pop_D1, data_out0_synth, data_out1_synth, error_out_synth, active_out_synth, idle_out_synth, errors_synth, MAIN_FIFO_pause_synth, almost_empty_d0_synth, almost_empty_d1_synth);
   wire _0_;
   (* src = "PCIe_synth.v:57.12-57.24" *)
@@ -8757,6 +8757,7 @@ module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full
   );
   assign almost_empty_d0_synth = push_0_dest;
   assign almost_empty_d1_synth = push_1_dest;
+  assign errors_synth = FIFO_errors_synth;
 endmodule
 
 (* src = "Logica/Pop_Main_and_Valid_synth.v:1.1-24.10" *)

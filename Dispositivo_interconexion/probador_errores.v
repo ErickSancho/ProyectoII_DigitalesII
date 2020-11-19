@@ -61,7 +61,7 @@ module probador
         reset <= 1;       
         @(posedge clk);
 
-        umbral_M_full <= 3; // 1 menos del total
+        umbral_M_full <= 2; // 1 menos del total
         umbral_M_empty <= 1;
         umbral_V_full <= 15; // 1 menos del total
         umbral_V_empty <= 1;
@@ -94,13 +94,27 @@ module probador
         end
 
         @(posedge clk);
-        repeat(80) begin
+        repeat(40) begin
             @(posedge clk);
-            push_data_in<=1;
-            data_in <= $random; // Todos irian a VC0 y D0
+            if (!MAIN_FIFO_pause) begin
+                push_data_in<=1;
+                data_in <= (data_in + 1) | 'b110000; // Todos irian a VC0 y D0
+            end
+            else begin
+                push_data_in<=0;
+                data_in<=0;
+            end
         end
-        repeat (50) begin
+
+        repeat (35) begin
             @(posedge clk);
+            pop_D0 <= 1;
+            pop_D1 <= 1;
+        end
+
+        repeat (35) begin
+            @(posedge clk);
+            reset<=0;
             data_in<=0;
             push_data_in<=0;
         end
