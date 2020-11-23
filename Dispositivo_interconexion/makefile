@@ -38,8 +38,8 @@ sed: yosys
 	@sed -i 's/idle_out/idle_out_synth/g' $(ESTR)
 	@sed -i 's/errors/errors_synth/g' $(ESTR)
 	@sed -i 's/MAIN_FIFO_pause/MAIN_FIFO_pause_synth/g' $(ESTR)
-	@sed -i 's/almost_empty_d0/almost_empty_d0_synth/g' $(ESTR)
-	@sed -i 's/almost_empty_d1/almost_empty_d1_synth/g' $(ESTR)
+	@sed -i 's/next_pop_D0/next_pop_D0_synth/g' $(ESTR)
+	@sed -i 's/next_pop_D1/next_pop_D1_synth/g' $(ESTR)
 
 
 #### General ####

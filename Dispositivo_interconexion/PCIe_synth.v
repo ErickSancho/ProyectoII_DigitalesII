@@ -8474,7 +8474,7 @@ endmodule
 (* dynports =  1  *)
 (* top =  1  *)
 (* src = "PCIe_synth.v:1.1-263.10" *)
-module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full, umbral_V_empty, umbral_D_full, umbral_D_empty, data_in, push_data_in, pop_D0, pop_D1, data_out0_synth, data_out1_synth, error_out_synth, active_out_synth, idle_out_synth, errors_synth, MAIN_FIFO_pause_synth, almost_empty_d0_synth, almost_empty_d1_synth);
+module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full, umbral_V_empty, umbral_D_full, umbral_D_empty, data_in, push_data_in, pop_D0, pop_D1, data_out0_synth, data_out1_synth, error_out_synth, active_out_synth, idle_out_synth, errors_synth, MAIN_FIFO_pause_synth, next_pop_D0_synth, next_pop_D1_synth);
   wire _0_;
   (* src = "PCIe_synth.v:57.12-57.24" *)
   wire [4:0] FIFO_empties;
@@ -8496,10 +8496,6 @@ module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full
   wire [4:0] Umbral_VC_bajo_interno;
   (* src = "PCIe_synth.v:25.12-25.22" *)
   output active_out_synth;
-  (* src = "PCIe_synth.v:29.9-29.24" *)
-  output almost_empty_d0_synth;
-  (* src = "PCIe_synth.v:30.9-30.24" *)
-  output almost_empty_d1_synth;
   (* src = "PCIe_synth.v:10.11-10.14" *)
   input clk;
   (* src = "PCIe_synth.v:18.17-18.24" *)
@@ -8535,6 +8531,10 @@ module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full
   output idle_out_synth;
   (* src = "PCIe_synth.v:11.11-11.15" *)
   input init;
+  (* src = "PCIe_synth.v:29.9-29.20" *)
+  output next_pop_D0_synth;
+  (* src = "PCIe_synth.v:30.9-30.20" *)
+  output next_pop_D1_synth;
   (* src = "PCIe_synth.v:62.6-62.14" *)
   wire pause_d0;
   (* src = "PCIe_synth.v:62.16-62.24" *)
@@ -8755,9 +8755,9 @@ module PCIe_synth(reset, clk, init, umbral_M_full, umbral_M_empty, umbral_V_full
     .reset_L(reset),
     .valid_pop_out(valid_pop_out)
   );
-  assign almost_empty_d0_synth = push_0_dest;
-  assign almost_empty_d1_synth = push_1_dest;
   assign errors_synth = FIFO_errors_synth;
+  assign next_pop_D0_synth = push_0_dest;
+  assign next_pop_D1_synth = push_1_dest;
 endmodule
 
 (* src = "Logica/Pop_Main_and_Valid_synth.v:1.1-24.10" *)

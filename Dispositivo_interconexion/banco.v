@@ -12,10 +12,10 @@ wire			MAIN_FIFO_pause;	// From Disp of PCIe.v
 wire			MAIN_FIFO_pause_synth;	// From Disp_sint of PCIe_synth.v
 wire			active_out;		// From Disp of PCIe.v
 wire			active_out_synth;	// From Disp_sint of PCIe_synth.v
-wire			almost_empty_d0;	// From Disp of PCIe.v
-wire			almost_empty_d0_synth;	// From Disp_sint of PCIe_synth.v
-wire			almost_empty_d1;	// From Disp of PCIe.v
-wire			almost_empty_d1_synth;	// From Disp_sint of PCIe_synth.v
+wire			next_pop_D0;	// From Disp of PCIe.v
+wire			next_pop_D0_synth;	// From Disp_sint of PCIe_synth.v
+wire			next_pop_D1;	// From Disp of PCIe.v
+wire			next_pop_D1_synth;	// From Disp_sint of PCIe_synth.v
 wire			clk;			// From test of probador.v
 wire [5:0]		data_in;		// From test of probador.v
 wire [5:0]		data_out0;		// From Disp of PCIe.v
@@ -50,8 +50,8 @@ PCIe Disp(/*AUTOINST*/
 	  .idle_out			(idle_out),
 	  .errors			(errors[4:0]),
 	  .MAIN_FIFO_pause		(MAIN_FIFO_pause),
-	  .almost_empty_d0		(almost_empty_d0),
-	  .almost_empty_d1		(almost_empty_d1),
+	  .next_pop_D0		(next_pop_D0),
+	  .next_pop_D1		(next_pop_D1),
 	  // Inputs
 	  .reset			(reset),
 	  .clk				(clk),
@@ -71,8 +71,8 @@ PCIe_synth Disp_sint(/*AUTOINST*/
 		     // Outputs
 		     .MAIN_FIFO_pause_synth(MAIN_FIFO_pause_synth),
 		     .active_out_synth	(active_out_synth),
-		     .almost_empty_d0_synth(almost_empty_d0_synth),
-		     .almost_empty_d1_synth(almost_empty_d1_synth),
+		     .next_pop_D0_synth(next_pop_D0_synth),
+		     .next_pop_D1_synth(next_pop_D1_synth),
 		     .data_out0_synth	(data_out0_synth[5:0]),
 		     .data_out1_synth	(data_out1_synth[5:0]),
 		     .error_out_synth	(error_out_synth),
@@ -115,8 +115,8 @@ probador test(/*AUTOINST*/
 	      .active_out		(active_out),
 	      .idle_out			(idle_out),
 	      .errors			(errors[4:0]),
-	      .almost_empty_d0		(almost_empty_d0),
-	      .almost_empty_d1		(almost_empty_d1),
+	      .next_pop_D0		(next_pop_D0),
+	      .next_pop_D1		(next_pop_D1),
 	      .MAIN_FIFO_pause		(MAIN_FIFO_pause),
 	      .data_out0_synth		(data_out0_synth[5:0]),
 	      .data_out1_synth		(data_out1_synth[5:0]),
@@ -125,7 +125,7 @@ probador test(/*AUTOINST*/
 	      .idle_out_synth		(idle_out_synth),
 	      .errors_synth		(errors_synth[4:0]),
 	      .MAIN_FIFO_pause_synth	(MAIN_FIFO_pause_synth),
-	      .almost_empty_d0_synth	(almost_empty_d0_synth),
-	      .almost_empty_d1_synth	(almost_empty_d1_synth));
+	      .next_pop_D0_synth	(next_pop_D0_synth),
+	      .next_pop_D1_synth	(next_pop_D1_synth));
 
 endmodule

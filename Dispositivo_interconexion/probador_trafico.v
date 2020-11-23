@@ -22,8 +22,8 @@ module probador
     input active_out,
     input idle_out,
     input [4:0] errors,
-    input almost_empty_d0,
-    input almost_empty_d1,
+    input next_pop_D0,
+    input next_pop_D1,
     input MAIN_FIFO_pause,
     input [5:0] data_out0_synth,
     input [5:0] data_out1_synth,
@@ -32,8 +32,8 @@ module probador
     input idle_out_synth,
     input [4:0] errors_synth,
     input MAIN_FIFO_pause_synth,
-    input almost_empty_d0_synth,
-    input almost_empty_d1_synth);
+    input next_pop_D0_synth,
+    input next_pop_D1_synth);
 
     initial begin
         $dumpfile("dispositivo_trafico.vcd");	// Nombre de archivo del "dump"
@@ -119,14 +119,14 @@ module probador
 
     // Control de pop
     // always @(posedge clk) begin
-    //     if(almost_empty_d0_synth == 1) begin
+    //     if(next_pop_D0_synth == 1) begin
     //         pop_D0=0;
     //     end
     //     else begin
     //         pop_D0=1;
     //     end
 
-    //     if(almost_empty_d1_synth == 1) begin
+    //     if(next_pop_D1_synth == 1) begin
     //         pop_D1=0;
     //     end
     //     else begin
@@ -135,8 +135,8 @@ module probador
     // end
 
     always @(posedge clk) begin
-        pop_D0 <= almost_empty_d0_synth;
-        pop_D1 <= almost_empty_d1_synth;
+        pop_D0 <= next_pop_D0_synth;
+        pop_D1 <= next_pop_D1_synth;
     end
 
 

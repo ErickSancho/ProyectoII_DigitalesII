@@ -26,8 +26,8 @@ module PCIe
     output idle_out,
     output [4:0] errors,
     output MAIN_FIFO_pause,
-	output almost_empty_d0,
-	output almost_empty_d1);
+	output next_pop_D0,
+	output next_pop_D1);
 
 /*AUT*/
 // Beginning of automatic wires (for undeclared instantiated-module outputs)
@@ -211,7 +211,7 @@ fifo FIFO_D0(/**/
 	     // Outputs
 	     .fifo_data_out		(data_out0[WORD_SIZE-1:0]),
 	     .error			(FIFO_errors[1]),
-	    //  .almost_empty		(almost_empty_d0),
+	    //  .almost_empty		(next_pop_D0),
 	     .almost_full		(pause_d0),
 	    //  .fifo_full			(fifo_full),
 	     .fifo_empty		(FIFO_empties[1]),
@@ -230,7 +230,7 @@ fifo FIFO_D1(/**/
 	     // Outputs
 	     .fifo_data_out		(data_out1[WORD_SIZE-1:0]),
 	     .error			(FIFO_errors[0]),
-	    //  .almost_empty		(almost_empty_d1),
+	    //  .almost_empty		(next_pop_D1),
 	     .almost_full		(pause_d1),
 	    //  .fifo_full			(fifo_full),
 	     .fifo_empty		(FIFO_empties[0]),
@@ -251,12 +251,12 @@ fifo FIFO_D1(/**/
 // end
 
 // always @(*) begin
-// 	almost_empty_d0 = push_0_dest;
-// 	almost_empty_d1 = push_1_dest;
+// 	next_pop_D0 = push_0_dest;
+// 	next_pop_D1 = push_1_dest;
 // end
 
-assign almost_empty_d0 = push_0_dest;
-assign almost_empty_d1 = push_1_dest;
+assign next_pop_D0 = push_0_dest;
+assign next_pop_D1 = push_1_dest;
 
 assign errors = FIFO_errors;
 

@@ -22,8 +22,8 @@ module probador
     input active_out,
     input idle_out,
     input [4:0] errors,
-    input almost_empty_d0,
-    input almost_empty_d1,
+    input next_pop_D0,
+    input next_pop_D1,
     input MAIN_FIFO_pause,
     input [5:0] data_out0_synth,
     input [5:0] data_out1_synth,
@@ -32,8 +32,8 @@ module probador
     input idle_out_synth,
     input [4:0] errors_synth,
     input MAIN_FIFO_pause_synth,
-    input almost_empty_d0_synth,
-    input almost_empty_d1_synth);
+    input next_pop_D0_synth,
+    input next_pop_D1_synth);
 
     initial begin
         $dumpfile("dispositivo_llenado_vaciado.vcd");	// Nombre de archivo del "dump"
@@ -179,14 +179,14 @@ module probador
                 push_data_in<=0;
                 data_in<=0;
             end           
-            pop_D0 <= almost_empty_d0_synth;
+            pop_D0 <= next_pop_D0_synth;
         end
 
         // repeat (5) begin
         @(posedge clk);
         data_in<=0;
         push_data_in<=0;
-        pop_D0 <= almost_empty_d0_synth;
+        pop_D0 <= next_pop_D0_synth;
         // end
 
         // repeat (18) begin
@@ -196,7 +196,7 @@ module probador
 
         repeat (14) begin
             @(posedge clk);
-            pop_D0 <= almost_empty_d0_synth;
+            pop_D0 <= next_pop_D0_synth;
         end
                
 
@@ -218,19 +218,19 @@ module probador
                 data_in<=0;
             end    
 
-            pop_D1 <= almost_empty_d1_synth;       
+            pop_D1 <= next_pop_D1_synth;       
         end
 
         // repeat (5) begin
         @(posedge clk);
         data_in<=0;
         push_data_in<=0;
-        pop_D1 <= almost_empty_d1_synth;
+        pop_D1 <= next_pop_D1_synth;
         // end
 
         repeat (14) begin
             @(posedge clk);
-            pop_D1 <= almost_empty_d1_synth;
+            pop_D1 <= next_pop_D1_synth;
         end
         
         
@@ -244,8 +244,8 @@ module probador
 
     // reg flag0, flag1, flag2, flag3;
     // always @(posedge clk) begin
-    //     flag0 <= almost_empty_d0_synth;
-    //     flag1 <= almost_empty_d1_synth;
+    //     flag0 <= next_pop_D0_synth;
+    //     flag1 <= next_pop_D1_synth;
     //     flag2 <= flag0;
     //     flag3 <= flag1;
     //     pop_D0 <= flag0;
